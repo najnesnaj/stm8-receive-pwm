@@ -10,7 +10,7 @@
    6 MOSI    PC6
    7 MISO    PC7
    8 IRQ     PD3
- */
+   */
 
 
 
@@ -519,6 +519,56 @@ void SE8R01_Init()
 }
 
 
+void Init_Tim2 ()
+{ 
+	// It is possible to configure the AFR option byte to get channel 3 on PD2 also.
+	/*
+	 *
+	 *
+
+
+	 0x4803 AFR alternate function remapping (vierde en vijfde byte)
+
+http://www.icbase.com/File/PDF/STM/STM39221308.pdf
+
+
+OPT2 
+AFR1 Alternate function remapping option 1 
+0: AFR1 remapping option inactive: Default alternate functions
+1: Port A3 alternate function = TIM3_CH1; port D2 alternate function TIM2_CH3. 
+
+
+echo "00 00 ff 02 ff 00 ff 00 ff 00 ff" | xxd -r -p > factory_defaults.bin
+stm8flash -c stlinkv2 -p stm8s103f3 -s opt -w tools/stm8s103FactoryDefaults.bin
+
+
+
+	 *
+	 *
+	 */
+
+
+	TIM2_CCMR3 |=0X70;//Set the timer 2 / three channel three (PD2) output mode
+	TIM2_CCMR3 |=0X04;//Comparison of 3 pre load / / output enable
+
+	TIM2_CCER2 |=0x03;//  Channel 3 enable, active low output configuration
+
+	// initialization clock divider is 1, the counter clock frequency is Fmaster=8M/64=0.125MHZ
+	TIM2_PSCR =0X06;// Automatic loading / / initialization register, PWM Fang Bo frequency, Fpwm=0.125M/62500=2HZ
+	TIM2_ARRH =62500/256; //auto reload register value
+	TIM2_ARRL =62500%256;
+	// compare register initialization, PWM Fang Bo decided the duty ratio: 5000/10000 = 50%
+	TIM2_CCR3H =31250/256; //compare capture register value
+	TIM2_CCR3L =31250%256;
+
+
+	//	Start counting / update interrupt disabled;
+	TIM2_CR1 |=0x81;
+	//TIM2_IER 0x00 |=;
+	//
+}
+
+
 
 int main () {
 	short voltage = 1900;
@@ -547,7 +597,10 @@ int main () {
 	print_UCHAR_hex(readstatus);
 
 	SE8R01_Init();
-
+	PD_DDR |= (1<<2);
+	PD_CR1 |= (1<<2);
+	PD_CR2 &= 0xFD;
+	Init_Tim2 (); //pwm for led on pd2
 
 
 	while (1) {

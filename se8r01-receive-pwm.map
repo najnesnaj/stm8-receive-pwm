@@ -44,12 +44,12 @@ CABS                                00000000    00000000 =           0. bytes (A
      00000083  l_HOME                          
      00000100  l_IRAM                          
      00000100  l_SSEG                          
-     00000918  l_CODE                          
+     00000969  l_CODE                          
      00008000  s_HOME                          
      00008083  s_GSINIT                        
      0000809D  s_GSFINAL                       
      000080A0  s_CODE                          
-     000089B8  s_INITIALIZER                   
+     00008A09  s_INITIALIZER                   
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
@@ -151,7 +151,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                000080A0    00000918 =        2328. bytes (REL,CON)
+CODE                                000080A0    00000969 =        2409. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -172,16 +172,16 @@ CODE                                000080A0    00000918 =        2328. bytes (R
      00008396  _SE8R01_Calibration                se8r01_receive_pwm
      00008562  _SE8R01_Analog_Init                se8r01_receive_pwm
      000086DE  _SE8R01_Init                       se8r01_receive_pwm
-     000087C4  _main                              se8r01_receive_pwm
-     00008943  __mulint                           _mulint
-     00008999  _memset                            _memset
-
+     000087C4  _Init_Tim2                         se8r01_receive_pwm
+     000087FF  _main                              se8r01_receive_pwm
+     00008994  __mulint                           _mulint
+     000089EA  _memset                            _memset
 ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-INITIALIZER                         000089B8    0000005E =          94. bytes (REL,CON)
+INITIALIZER                         00008A09    0000005E =          94. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
