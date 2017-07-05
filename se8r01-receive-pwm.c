@@ -554,7 +554,7 @@ stm8flash -c stlinkv2 -p stm8s103f3 -s opt -w tools/stm8s103FactoryDefaults.bin
 	TIM2_CCER2 |=0x03;//  Channel 3 enable, active low output configuration
 
 	// initialization clock divider is 1, the counter clock frequency is Fmaster=8M/64=0.125MHZ
-	TIM2_PSCR =0X06;// Automatic loading / / initialization register, PWM Fang Bo frequency, Fpwm=0.125M/62500=2HZ
+	TIM2_PSCR =0X04;// Automatic loading / / initialization register, PWM Fang Bo frequency, Fpwm=0.125M/62500=2HZ
 	TIM2_ARRH =62500/256; //auto reload register value
 	TIM2_ARRL =62500%256;
 	// compare register initialization, PWM Fang Bo decided the duty ratio: 5000/10000 = 50%
@@ -583,6 +583,7 @@ int main () {
 	//   InitializeI2C();
 	InitializeSPI ();
 
+	UARTPrintF("start debug \n\r");
 
 	memset (tx_payload, 0, sizeof(tx_payload));
 
@@ -596,11 +597,12 @@ int main () {
 	UARTPrintF("status = \n\r");
 	print_UCHAR_hex(readstatus);
 
-	SE8R01_Init();
+	Init_Tim2 (); //pwm for led on pd2
 	PD_DDR |= (1<<2);
 	PD_CR1 |= (1<<2);
 	PD_CR2 &= 0xFD;
-	Init_Tim2 (); //pwm for led on pd2
+	SE8R01_Init();
+	UARTPrintF("timer initialised = \n\r");
 
 
 	while (1) {
@@ -629,12 +631,14 @@ int main () {
 
 			write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
 
+
 		}
 
 		for (x1 = 0; x1 < 50; ++x1)
 			for (y1 = 0; y1 < 50; ++y1)
 				for (z1 = 0; z1 < 50; ++z1)
 					__asm__("nop");
+
 
 
 	}

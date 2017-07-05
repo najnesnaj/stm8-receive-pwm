@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
-                                      3 ; Version 3.4.0 #8981 (Jul 11 2014) (Linux)
-                                      4 ; This file was generated Tue Jul  4 15:26:01 2017
+                                      3 ; Version 3.4.0 #8981 (Jul  5 2014) (Linux)
+                                      4 ; This file was generated Wed Jul  5 18:42:51 2017
                                       5 ;--------------------------------------------------------
                                       6 	.module se8r01_receive_pwm
                                       7 	.optsdcc -mstm8
@@ -165,7 +165,7 @@
       00808F AE 00 5E         [ 2]  165 	ldw	x, #l_INITIALIZER
       008092 27 09            [ 1]  166 	jreq	00004$
       008094                        167 00003$:
-      008094 D6 8A 08         [ 1]  168 	ld	a, (s_INITIALIZER - 1, x)
+      008094 D6 8A 40         [ 1]  168 	ld	a, (s_INITIALIZER - 1, x)
       008097 D7 00 0F         [ 1]  169 	ld	(s_INITIALIZED - 1, x), a
       00809A 5A               [ 2]  170 	decw	x
       00809B 26 F7            [ 1]  171 	jrne	00003$
@@ -524,7 +524,7 @@
       008237 89               [ 2]  524 	pushw	x
       008238 4B 0C            [ 1]  525 	push	#0x0c
       00823A 4B 04            [ 1]  526 	push	#0x04
-      00823C CD 89 94         [ 4]  527 	call	__mulint
+      00823C CD 89 CC         [ 4]  527 	call	__mulint
       00823F 5B 04            [ 2]  528 	addw	sp, #4
       008241 1F 09            [ 2]  529 	ldw	(0x09, sp), x
       008243                        530 00103$:
@@ -1549,9 +1549,9 @@
       0087D5 F6               [ 1] 1549 	ld	a, (x)
       0087D6 AA 03            [ 1] 1550 	or	a, #0x03
       0087D8 F7               [ 1] 1551 	ld	(x), a
-                                   1552 ;	se8r01-receive-pwm.c: 557: TIM2_PSCR =0X06;// Automatic loading / / initialization register, PWM Fang Bo frequency, Fpwm=0.125M/62500=2HZ
+                                   1552 ;	se8r01-receive-pwm.c: 557: TIM2_PSCR =0X04;// Automatic loading / / initialization register, PWM Fang Bo frequency, Fpwm=0.125M/62500=2HZ
       0087D9 AE 53 0E         [ 2] 1553 	ldw	x, #0x530e
-      0087DC A6 06            [ 1] 1554 	ld	a, #0x06
+      0087DC A6 04            [ 1] 1554 	ld	a, #0x04
       0087DE F7               [ 1] 1555 	ld	(x), a
                                    1556 ;	se8r01-receive-pwm.c: 558: TIM2_ARRH =62500/256; //auto reload register value
       0087DF AE 53 0F         [ 2] 1557 	ldw	x, #0x530f
@@ -1628,324 +1628,347 @@
       008844 CD 82 DC         [ 4] 1628 	call	_InitializeUART
                                    1629 ;	se8r01-receive-pwm.c: 584: InitializeSPI ();
       008847 CD 81 BC         [ 4] 1630 	call	_InitializeSPI
-                                   1631 ;	se8r01-receive-pwm.c: 587: memset (tx_payload, 0, sizeof(tx_payload));
-      00884A 96               [ 1] 1632 	ldw	x, sp
-      00884B 5C               [ 2] 1633 	incw	x
-      00884C 4B 21            [ 1] 1634 	push	#0x21
-      00884E 4B 00            [ 1] 1635 	push	#0x00
-      008850 4B 00            [ 1] 1636 	push	#0x00
-      008852 4B 00            [ 1] 1637 	push	#0x00
-      008854 89               [ 2] 1638 	pushw	x
-      008855 CD 89 EA         [ 4] 1639 	call	_memset
-      008858 5B 06            [ 2] 1640 	addw	sp, #6
-                                   1641 ;	se8r01-receive-pwm.c: 590: init_io();                        // Initialize IO port
-      00885A CD 83 55         [ 4] 1642 	call	_init_io
-                                   1643 ;	se8r01-receive-pwm.c: 591: write_spi_reg(FLUSH_RX,0); // receive data 
-      00885D 4B 00            [ 1] 1644 	push	#0x00
-      00885F 4B E2            [ 1] 1645 	push	#0xe2
-      008861 CD 80 CE         [ 4] 1646 	call	_write_spi_reg
-      008864 5B 02            [ 2] 1647 	addw	sp, #2
-                                   1648 ;	se8r01-receive-pwm.c: 592: readstatus = read_spi_reg(CONFIG);
+                                   1631 ;	se8r01-receive-pwm.c: 586: UARTPrintF("start debug \n\r");
+      00884A AE 89 8B         [ 2] 1632 	ldw	x, #___str_0+0
+      00884D 89               [ 2] 1633 	pushw	x
+      00884E CD 82 79         [ 4] 1634 	call	_UARTPrintF
+      008851 5B 02            [ 2] 1635 	addw	sp, #2
+                                   1636 ;	se8r01-receive-pwm.c: 588: memset (tx_payload, 0, sizeof(tx_payload));
+      008853 96               [ 1] 1637 	ldw	x, sp
+      008854 5C               [ 2] 1638 	incw	x
+      008855 4B 21            [ 1] 1639 	push	#0x21
+      008857 4B 00            [ 1] 1640 	push	#0x00
+      008859 4B 00            [ 1] 1641 	push	#0x00
+      00885B 4B 00            [ 1] 1642 	push	#0x00
+      00885D 89               [ 2] 1643 	pushw	x
+      00885E CD 8A 22         [ 4] 1644 	call	_memset
+      008861 5B 06            [ 2] 1645 	addw	sp, #6
+                                   1646 ;	se8r01-receive-pwm.c: 591: init_io();                        // Initialize IO port
+      008863 CD 83 55         [ 4] 1647 	call	_init_io
+                                   1648 ;	se8r01-receive-pwm.c: 592: write_spi_reg(FLUSH_RX,0); // receive data 
       008866 4B 00            [ 1] 1649 	push	#0x00
-      008868 CD 81 0A         [ 4] 1650 	call	_read_spi_reg
-      00886B 5B 01            [ 2] 1651 	addw	sp, #1
-                                   1652 ;	se8r01-receive-pwm.c: 593: UARTPrintF("config = \n\r");
-      00886D AE 89 79         [ 2] 1653 	ldw	x, #___str_0+0
-      008870 88               [ 1] 1654 	push	a
-      008871 89               [ 2] 1655 	pushw	x
-      008872 CD 82 79         [ 4] 1656 	call	_UARTPrintF
-      008875 5B 02            [ 2] 1657 	addw	sp, #2
-      008877 84               [ 1] 1658 	pop	a
-                                   1659 ;	se8r01-receive-pwm.c: 594: print_UCHAR_hex(readstatus);
-      008878 88               [ 1] 1660 	push	a
-      008879 CD 82 90         [ 4] 1661 	call	_print_UCHAR_hex
-      00887C 84               [ 1] 1662 	pop	a
-                                   1663 ;	se8r01-receive-pwm.c: 595: readstatus = read_spi_reg(STATUS);
-      00887D 4B 07            [ 1] 1664 	push	#0x07
-      00887F CD 81 0A         [ 4] 1665 	call	_read_spi_reg
-      008882 5B 01            [ 2] 1666 	addw	sp, #1
-                                   1667 ;	se8r01-receive-pwm.c: 596: UARTPrintF("status = \n\r");
-      008884 AE 89 85         [ 2] 1668 	ldw	x, #___str_1+0
-      008887 88               [ 1] 1669 	push	a
-      008888 89               [ 2] 1670 	pushw	x
-      008889 CD 82 79         [ 4] 1671 	call	_UARTPrintF
-      00888C 5B 02            [ 2] 1672 	addw	sp, #2
-      00888E 84               [ 1] 1673 	pop	a
-                                   1674 ;	se8r01-receive-pwm.c: 597: print_UCHAR_hex(readstatus);
-      00888F 88               [ 1] 1675 	push	a
-      008890 CD 82 90         [ 4] 1676 	call	_print_UCHAR_hex
-      008893 84               [ 1] 1677 	pop	a
-                                   1678 ;	se8r01-receive-pwm.c: 599: SE8R01_Init();
-      008894 CD 86 DE         [ 4] 1679 	call	_SE8R01_Init
-                                   1680 ;	se8r01-receive-pwm.c: 600: PD_DDR |= (1<<2);
-      008897 AE 50 11         [ 2] 1681 	ldw	x, #0x5011
-      00889A F6               [ 1] 1682 	ld	a, (x)
-      00889B AA 04            [ 1] 1683 	or	a, #0x04
-      00889D F7               [ 1] 1684 	ld	(x), a
-                                   1685 ;	se8r01-receive-pwm.c: 601: PD_CR1 |= (1<<2);
-      00889E AE 50 12         [ 2] 1686 	ldw	x, #0x5012
-      0088A1 F6               [ 1] 1687 	ld	a, (x)
-      0088A2 AA 04            [ 1] 1688 	or	a, #0x04
-      0088A4 F7               [ 1] 1689 	ld	(x), a
-                                   1690 ;	se8r01-receive-pwm.c: 602: PD_CR2 &= 0xFD;
-      0088A5 AE 50 13         [ 2] 1691 	ldw	x, #0x5013
-      0088A8 F6               [ 1] 1692 	ld	a, (x)
-      0088A9 A4 FD            [ 1] 1693 	and	a, #0xfd
-      0088AB F7               [ 1] 1694 	ld	(x), a
-                                   1695 ;	se8r01-receive-pwm.c: 603: Init_Tim2 (); //pwm for led on pd2
-      0088AC CD 87 C4         [ 4] 1696 	call	_Init_Tim2
-                                   1697 ;	se8r01-receive-pwm.c: 606: while (1) {
-      0088AF                       1698 00110$:
-                                   1699 ;	se8r01-receive-pwm.c: 608: if ((PD_IDR & (1 << 3))==0) //input low
-      0088AF AE 50 10         [ 2] 1700 	ldw	x, #0x5010
-      0088B2 F6               [ 1] 1701 	ld	a, (x)
-      0088B3 A5 08            [ 1] 1702 	bcp	a, #0x08
-      0088B5 27 03            [ 1] 1703 	jreq	00170$
-      0088B7 CC 89 3F         [ 2] 1704 	jp	00105$
-      0088BA                       1705 00170$:
-                                   1706 ;	se8r01-receive-pwm.c: 612: delay(240);
-      0088BA 4B F0            [ 1] 1707 	push	#0xf0
-      0088BC 4B 00            [ 1] 1708 	push	#0x00
-      0088BE CD 82 2E         [ 4] 1709 	call	_delay
-      0088C1 5B 02            [ 2] 1710 	addw	sp, #2
-                                   1711 ;	se8r01-receive-pwm.c: 613: signal_lv=read_spi_reg(iRF_BANK0_RPD);
-      0088C3 4B 09            [ 1] 1712 	push	#0x09
-      0088C5 CD 81 0A         [ 4] 1713 	call	_read_spi_reg
-      0088C8 5B 01            [ 2] 1714 	addw	sp, #1
-      0088CA C7 00 1A         [ 1] 1715 	ld	_signal_lv+0, a
-                                   1716 ;	se8r01-receive-pwm.c: 614: status = read_spi_reg(STATUS);
-      0088CD 4B 07            [ 1] 1717 	push	#0x07
-      0088CF CD 81 0A         [ 4] 1718 	call	_read_spi_reg
-      0088D2 5B 01            [ 2] 1719 	addw	sp, #1
-      0088D4 C7 00 1D         [ 1] 1720 	ld	_status+0, a
-                                   1721 ;	se8r01-receive-pwm.c: 616: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
-      0088D7 72 06 00 1D 02   [ 2] 1722 	btjt	_status+0, #6, 00171$
-      0088DC 20 57            [ 2] 1723 	jra	00103$
-      0088DE                       1724 00171$:
-                                   1725 ;	se8r01-receive-pwm.c: 619: pip= (status & 0b00001110)>>1;
-      0088DE C6 00 1D         [ 1] 1726 	ld	a, _status+0
-      0088E1 A4 0E            [ 1] 1727 	and	a, #0x0e
-      0088E3 44               [ 1] 1728 	srl	a
-      0088E4 5F               [ 1] 1729 	clrw	x
-      0088E5 97               [ 1] 1730 	ld	xl, a
-      0088E6 CF 00 1B         [ 2] 1731 	ldw	_pip+0, x
-                                   1732 ;	se8r01-receive-pwm.c: 620: pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
-      0088E9 4B 60            [ 1] 1733 	push	#0x60
-      0088EB CD 81 0A         [ 4] 1734 	call	_read_spi_reg
-      0088EE 5B 01            [ 2] 1735 	addw	sp, #1
-      0088F0 5F               [ 1] 1736 	clrw	x
-      0088F1 97               [ 1] 1737 	ld	xl, a
-      0088F2 CF 00 16         [ 2] 1738 	ldw	_pload_width_now+0, x
-                                   1739 ;	se8r01-receive-pwm.c: 621: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
-      0088F5 AE 00 2E         [ 2] 1740 	ldw	x, #_rx_buf+0
-      0088F8 1F 32            [ 2] 1741 	ldw	(0x32, sp), x
-      0088FA 1E 32            [ 2] 1742 	ldw	x, (0x32, sp)
-      0088FC 4B 20            [ 1] 1743 	push	#0x20
-      0088FE 89               [ 2] 1744 	pushw	x
-      0088FF 4B 61            [ 1] 1745 	push	#0x61
-      008901 CD 81 80         [ 4] 1746 	call	_read_spi_buf
-      008904 5B 04            [ 2] 1747 	addw	sp, #4
-                                   1748 ;	se8r01-receive-pwm.c: 622: write_spi_reg(FLUSH_RX,0);
-      008906 4B 00            [ 1] 1749 	push	#0x00
-      008908 4B E2            [ 1] 1750 	push	#0xe2
-      00890A CD 80 CE         [ 4] 1751 	call	_write_spi_reg
-      00890D 5B 02            [ 2] 1752 	addw	sp, #2
-                                   1753 ;	se8r01-receive-pwm.c: 624: newdata=1;
-      00890F 35 01 00 19      [ 1] 1754 	mov	_newdata+1, #0x01
-      008913 72 5F 00 18      [ 1] 1755 	clr	_newdata+0
-                                   1756 ;	se8r01-receive-pwm.c: 625: for (teller=0;teller<32;++teller)
-      008917 5F               [ 1] 1757 	clrw	x
-      008918                       1758 00112$:
-                                   1759 ;	se8r01-receive-pwm.c: 626: print_UCHAR_hex (rx_buf[teller]);
-      008918 90 93            [ 1] 1760 	ldw	y, x
-      00891A 72 F9 32         [ 2] 1761 	addw	y, (0x32, sp)
-      00891D 90 F6            [ 1] 1762 	ld	a, (y)
-      00891F 89               [ 2] 1763 	pushw	x
-      008920 88               [ 1] 1764 	push	a
-      008921 CD 82 90         [ 4] 1765 	call	_print_UCHAR_hex
-      008924 84               [ 1] 1766 	pop	a
-      008925 85               [ 2] 1767 	popw	x
-                                   1768 ;	se8r01-receive-pwm.c: 625: for (teller=0;teller<32;++teller)
-      008926 5C               [ 2] 1769 	incw	x
-      008927 A3 00 20         [ 2] 1770 	cpw	x, #0x0020
-      00892A 2F EC            [ 1] 1771 	jrslt	00112$
-                                   1772 ;	se8r01-receive-pwm.c: 627: UARTPrintF("\n\r");
-      00892C AE 89 91         [ 2] 1773 	ldw	x, #___str_2+0
-      00892F 89               [ 2] 1774 	pushw	x
-      008930 CD 82 79         [ 4] 1775 	call	_UARTPrintF
-      008933 5B 02            [ 2] 1776 	addw	sp, #2
-      008935                       1777 00103$:
-                                   1778 ;	se8r01-receive-pwm.c: 630: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
-      008935 3B 00 1D         [ 1] 1779 	push	_status+0
-      008938 4B 27            [ 1] 1780 	push	#0x27
-      00893A CD 80 CE         [ 4] 1781 	call	_write_spi_reg
-      00893D 5B 02            [ 2] 1782 	addw	sp, #2
-      00893F                       1783 00105$:
-                                   1784 ;	se8r01-receive-pwm.c: 634: for (x1 = 0; x1 < 50; ++x1)
-      00893F 5F               [ 1] 1785 	clrw	x
-      008940 1F 2B            [ 2] 1786 	ldw	(0x2b, sp), x
-      008942                       1787 00121$:
-      008942 1E 2B            [ 2] 1788 	ldw	x, (0x2b, sp)
-      008944 A3 00 32         [ 2] 1789 	cpw	x, #0x0032
-      008947 2F 03            [ 1] 1790 	jrslt	00173$
-      008949 CC 88 AF         [ 2] 1791 	jp	00110$
-      00894C                       1792 00173$:
-                                   1793 ;	se8r01-receive-pwm.c: 635: for (y1 = 0; y1 < 50; ++y1)
-      00894C 5F               [ 1] 1794 	clrw	x
-      00894D 1F 29            [ 2] 1795 	ldw	(0x29, sp), x
-      00894F                       1796 00118$:
-      00894F 1E 29            [ 2] 1797 	ldw	x, (0x29, sp)
-      008951 A3 00 32         [ 2] 1798 	cpw	x, #0x0032
-      008954 2E 19            [ 1] 1799 	jrsge	00122$
-                                   1800 ;	se8r01-receive-pwm.c: 636: for (z1 = 0; z1 < 50; ++z1)
-      008956 5F               [ 1] 1801 	clrw	x
-      008957 1F 27            [ 2] 1802 	ldw	(0x27, sp), x
-      008959                       1803 00115$:
-      008959 1E 27            [ 2] 1804 	ldw	x, (0x27, sp)
-      00895B A3 00 32         [ 2] 1805 	cpw	x, #0x0032
-      00895E 2E 08            [ 1] 1806 	jrsge	00119$
-                                   1807 ;	se8r01-receive-pwm.c: 637: __asm__("nop");
-      008960 9D               [ 1] 1808 	nop
-                                   1809 ;	se8r01-receive-pwm.c: 636: for (z1 = 0; z1 < 50; ++z1)
-      008961 1E 27            [ 2] 1810 	ldw	x, (0x27, sp)
-      008963 5C               [ 2] 1811 	incw	x
-      008964 1F 27            [ 2] 1812 	ldw	(0x27, sp), x
-      008966 20 F1            [ 2] 1813 	jra	00115$
-      008968                       1814 00119$:
-                                   1815 ;	se8r01-receive-pwm.c: 635: for (y1 = 0; y1 < 50; ++y1)
-      008968 1E 29            [ 2] 1816 	ldw	x, (0x29, sp)
-      00896A 5C               [ 2] 1817 	incw	x
-      00896B 1F 29            [ 2] 1818 	ldw	(0x29, sp), x
-      00896D 20 E0            [ 2] 1819 	jra	00118$
-      00896F                       1820 00122$:
-                                   1821 ;	se8r01-receive-pwm.c: 634: for (x1 = 0; x1 < 50; ++x1)
-      00896F 1E 2B            [ 2] 1822 	ldw	x, (0x2b, sp)
-      008971 5C               [ 2] 1823 	incw	x
-      008972 1F 2B            [ 2] 1824 	ldw	(0x2b, sp), x
-      008974 20 CC            [ 2] 1825 	jra	00121$
-      008976 5B 33            [ 2] 1826 	addw	sp, #51
-      008978 81               [ 4] 1827 	ret
-                                   1828 	.area CODE
-      008979                       1829 ___str_0:
-      008979 63 6F 6E 66 69 67 20  1830 	.ascii "config = "
+      008868 4B E2            [ 1] 1650 	push	#0xe2
+      00886A CD 80 CE         [ 4] 1651 	call	_write_spi_reg
+      00886D 5B 02            [ 2] 1652 	addw	sp, #2
+                                   1653 ;	se8r01-receive-pwm.c: 593: readstatus = read_spi_reg(CONFIG);
+      00886F 4B 00            [ 1] 1654 	push	#0x00
+      008871 CD 81 0A         [ 4] 1655 	call	_read_spi_reg
+      008874 5B 01            [ 2] 1656 	addw	sp, #1
+                                   1657 ;	se8r01-receive-pwm.c: 594: UARTPrintF("config = \n\r");
+      008876 AE 89 9A         [ 2] 1658 	ldw	x, #___str_1+0
+      008879 88               [ 1] 1659 	push	a
+      00887A 89               [ 2] 1660 	pushw	x
+      00887B CD 82 79         [ 4] 1661 	call	_UARTPrintF
+      00887E 5B 02            [ 2] 1662 	addw	sp, #2
+      008880 84               [ 1] 1663 	pop	a
+                                   1664 ;	se8r01-receive-pwm.c: 595: print_UCHAR_hex(readstatus);
+      008881 88               [ 1] 1665 	push	a
+      008882 CD 82 90         [ 4] 1666 	call	_print_UCHAR_hex
+      008885 84               [ 1] 1667 	pop	a
+                                   1668 ;	se8r01-receive-pwm.c: 596: readstatus = read_spi_reg(STATUS);
+      008886 4B 07            [ 1] 1669 	push	#0x07
+      008888 CD 81 0A         [ 4] 1670 	call	_read_spi_reg
+      00888B 5B 01            [ 2] 1671 	addw	sp, #1
+                                   1672 ;	se8r01-receive-pwm.c: 597: UARTPrintF("status = \n\r");
+      00888D AE 89 A6         [ 2] 1673 	ldw	x, #___str_2+0
+      008890 88               [ 1] 1674 	push	a
+      008891 89               [ 2] 1675 	pushw	x
+      008892 CD 82 79         [ 4] 1676 	call	_UARTPrintF
+      008895 5B 02            [ 2] 1677 	addw	sp, #2
+      008897 84               [ 1] 1678 	pop	a
+                                   1679 ;	se8r01-receive-pwm.c: 598: print_UCHAR_hex(readstatus);
+      008898 88               [ 1] 1680 	push	a
+      008899 CD 82 90         [ 4] 1681 	call	_print_UCHAR_hex
+      00889C 84               [ 1] 1682 	pop	a
+                                   1683 ;	se8r01-receive-pwm.c: 600: Init_Tim2 (); //pwm for led on pd2
+      00889D CD 87 C4         [ 4] 1684 	call	_Init_Tim2
+                                   1685 ;	se8r01-receive-pwm.c: 601: PD_DDR |= (1<<2);
+      0088A0 AE 50 11         [ 2] 1686 	ldw	x, #0x5011
+      0088A3 F6               [ 1] 1687 	ld	a, (x)
+      0088A4 AA 04            [ 1] 1688 	or	a, #0x04
+      0088A6 F7               [ 1] 1689 	ld	(x), a
+                                   1690 ;	se8r01-receive-pwm.c: 602: PD_CR1 |= (1<<2);
+      0088A7 AE 50 12         [ 2] 1691 	ldw	x, #0x5012
+      0088AA F6               [ 1] 1692 	ld	a, (x)
+      0088AB AA 04            [ 1] 1693 	or	a, #0x04
+      0088AD F7               [ 1] 1694 	ld	(x), a
+                                   1695 ;	se8r01-receive-pwm.c: 603: PD_CR2 &= 0xFD;
+      0088AE AE 50 13         [ 2] 1696 	ldw	x, #0x5013
+      0088B1 F6               [ 1] 1697 	ld	a, (x)
+      0088B2 A4 FD            [ 1] 1698 	and	a, #0xfd
+      0088B4 F7               [ 1] 1699 	ld	(x), a
+                                   1700 ;	se8r01-receive-pwm.c: 604: SE8R01_Init();
+      0088B5 CD 86 DE         [ 4] 1701 	call	_SE8R01_Init
+                                   1702 ;	se8r01-receive-pwm.c: 605: UARTPrintF("timer initialised = \n\r");
+      0088B8 AE 89 B2         [ 2] 1703 	ldw	x, #___str_3+0
+      0088BB 89               [ 2] 1704 	pushw	x
+      0088BC CD 82 79         [ 4] 1705 	call	_UARTPrintF
+      0088BF 5B 02            [ 2] 1706 	addw	sp, #2
+                                   1707 ;	se8r01-receive-pwm.c: 608: while (1) {
+      0088C1                       1708 00110$:
+                                   1709 ;	se8r01-receive-pwm.c: 610: if ((PD_IDR & (1 << 3))==0) //input low
+      0088C1 AE 50 10         [ 2] 1710 	ldw	x, #0x5010
+      0088C4 F6               [ 1] 1711 	ld	a, (x)
+      0088C5 A5 08            [ 1] 1712 	bcp	a, #0x08
+      0088C7 27 03            [ 1] 1713 	jreq	00170$
+      0088C9 CC 89 51         [ 2] 1714 	jp	00105$
+      0088CC                       1715 00170$:
+                                   1716 ;	se8r01-receive-pwm.c: 614: delay(240);
+      0088CC 4B F0            [ 1] 1717 	push	#0xf0
+      0088CE 4B 00            [ 1] 1718 	push	#0x00
+      0088D0 CD 82 2E         [ 4] 1719 	call	_delay
+      0088D3 5B 02            [ 2] 1720 	addw	sp, #2
+                                   1721 ;	se8r01-receive-pwm.c: 615: signal_lv=read_spi_reg(iRF_BANK0_RPD);
+      0088D5 4B 09            [ 1] 1722 	push	#0x09
+      0088D7 CD 81 0A         [ 4] 1723 	call	_read_spi_reg
+      0088DA 5B 01            [ 2] 1724 	addw	sp, #1
+      0088DC C7 00 1A         [ 1] 1725 	ld	_signal_lv+0, a
+                                   1726 ;	se8r01-receive-pwm.c: 616: status = read_spi_reg(STATUS);
+      0088DF 4B 07            [ 1] 1727 	push	#0x07
+      0088E1 CD 81 0A         [ 4] 1728 	call	_read_spi_reg
+      0088E4 5B 01            [ 2] 1729 	addw	sp, #1
+      0088E6 C7 00 1D         [ 1] 1730 	ld	_status+0, a
+                                   1731 ;	se8r01-receive-pwm.c: 618: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
+      0088E9 72 06 00 1D 02   [ 2] 1732 	btjt	_status+0, #6, 00171$
+      0088EE 20 57            [ 2] 1733 	jra	00103$
+      0088F0                       1734 00171$:
+                                   1735 ;	se8r01-receive-pwm.c: 621: pip= (status & 0b00001110)>>1;
+      0088F0 C6 00 1D         [ 1] 1736 	ld	a, _status+0
+      0088F3 A4 0E            [ 1] 1737 	and	a, #0x0e
+      0088F5 44               [ 1] 1738 	srl	a
+      0088F6 5F               [ 1] 1739 	clrw	x
+      0088F7 97               [ 1] 1740 	ld	xl, a
+      0088F8 CF 00 1B         [ 2] 1741 	ldw	_pip+0, x
+                                   1742 ;	se8r01-receive-pwm.c: 622: pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
+      0088FB 4B 60            [ 1] 1743 	push	#0x60
+      0088FD CD 81 0A         [ 4] 1744 	call	_read_spi_reg
+      008900 5B 01            [ 2] 1745 	addw	sp, #1
+      008902 5F               [ 1] 1746 	clrw	x
+      008903 97               [ 1] 1747 	ld	xl, a
+      008904 CF 00 16         [ 2] 1748 	ldw	_pload_width_now+0, x
+                                   1749 ;	se8r01-receive-pwm.c: 623: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
+      008907 AE 00 2E         [ 2] 1750 	ldw	x, #_rx_buf+0
+      00890A 1F 32            [ 2] 1751 	ldw	(0x32, sp), x
+      00890C 1E 32            [ 2] 1752 	ldw	x, (0x32, sp)
+      00890E 4B 20            [ 1] 1753 	push	#0x20
+      008910 89               [ 2] 1754 	pushw	x
+      008911 4B 61            [ 1] 1755 	push	#0x61
+      008913 CD 81 80         [ 4] 1756 	call	_read_spi_buf
+      008916 5B 04            [ 2] 1757 	addw	sp, #4
+                                   1758 ;	se8r01-receive-pwm.c: 624: write_spi_reg(FLUSH_RX,0);
+      008918 4B 00            [ 1] 1759 	push	#0x00
+      00891A 4B E2            [ 1] 1760 	push	#0xe2
+      00891C CD 80 CE         [ 4] 1761 	call	_write_spi_reg
+      00891F 5B 02            [ 2] 1762 	addw	sp, #2
+                                   1763 ;	se8r01-receive-pwm.c: 626: newdata=1;
+      008921 35 01 00 19      [ 1] 1764 	mov	_newdata+1, #0x01
+      008925 72 5F 00 18      [ 1] 1765 	clr	_newdata+0
+                                   1766 ;	se8r01-receive-pwm.c: 627: for (teller=0;teller<32;++teller)
+      008929 5F               [ 1] 1767 	clrw	x
+      00892A                       1768 00112$:
+                                   1769 ;	se8r01-receive-pwm.c: 628: print_UCHAR_hex (rx_buf[teller]);
+      00892A 90 93            [ 1] 1770 	ldw	y, x
+      00892C 72 F9 32         [ 2] 1771 	addw	y, (0x32, sp)
+      00892F 90 F6            [ 1] 1772 	ld	a, (y)
+      008931 89               [ 2] 1773 	pushw	x
+      008932 88               [ 1] 1774 	push	a
+      008933 CD 82 90         [ 4] 1775 	call	_print_UCHAR_hex
+      008936 84               [ 1] 1776 	pop	a
+      008937 85               [ 2] 1777 	popw	x
+                                   1778 ;	se8r01-receive-pwm.c: 627: for (teller=0;teller<32;++teller)
+      008938 5C               [ 2] 1779 	incw	x
+      008939 A3 00 20         [ 2] 1780 	cpw	x, #0x0020
+      00893C 2F EC            [ 1] 1781 	jrslt	00112$
+                                   1782 ;	se8r01-receive-pwm.c: 629: UARTPrintF("\n\r");
+      00893E AE 89 C9         [ 2] 1783 	ldw	x, #___str_4+0
+      008941 89               [ 2] 1784 	pushw	x
+      008942 CD 82 79         [ 4] 1785 	call	_UARTPrintF
+      008945 5B 02            [ 2] 1786 	addw	sp, #2
+      008947                       1787 00103$:
+                                   1788 ;	se8r01-receive-pwm.c: 632: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
+      008947 3B 00 1D         [ 1] 1789 	push	_status+0
+      00894A 4B 27            [ 1] 1790 	push	#0x27
+      00894C CD 80 CE         [ 4] 1791 	call	_write_spi_reg
+      00894F 5B 02            [ 2] 1792 	addw	sp, #2
+      008951                       1793 00105$:
+                                   1794 ;	se8r01-receive-pwm.c: 637: for (x1 = 0; x1 < 50; ++x1)
+      008951 5F               [ 1] 1795 	clrw	x
+      008952 1F 2B            [ 2] 1796 	ldw	(0x2b, sp), x
+      008954                       1797 00121$:
+      008954 1E 2B            [ 2] 1798 	ldw	x, (0x2b, sp)
+      008956 A3 00 32         [ 2] 1799 	cpw	x, #0x0032
+      008959 2F 03            [ 1] 1800 	jrslt	00173$
+      00895B CC 88 C1         [ 2] 1801 	jp	00110$
+      00895E                       1802 00173$:
+                                   1803 ;	se8r01-receive-pwm.c: 638: for (y1 = 0; y1 < 50; ++y1)
+      00895E 5F               [ 1] 1804 	clrw	x
+      00895F 1F 29            [ 2] 1805 	ldw	(0x29, sp), x
+      008961                       1806 00118$:
+      008961 1E 29            [ 2] 1807 	ldw	x, (0x29, sp)
+      008963 A3 00 32         [ 2] 1808 	cpw	x, #0x0032
+      008966 2E 19            [ 1] 1809 	jrsge	00122$
+                                   1810 ;	se8r01-receive-pwm.c: 639: for (z1 = 0; z1 < 50; ++z1)
+      008968 5F               [ 1] 1811 	clrw	x
+      008969 1F 27            [ 2] 1812 	ldw	(0x27, sp), x
+      00896B                       1813 00115$:
+      00896B 1E 27            [ 2] 1814 	ldw	x, (0x27, sp)
+      00896D A3 00 32         [ 2] 1815 	cpw	x, #0x0032
+      008970 2E 08            [ 1] 1816 	jrsge	00119$
+                                   1817 ;	se8r01-receive-pwm.c: 640: __asm__("nop");
+      008972 9D               [ 1] 1818 	nop
+                                   1819 ;	se8r01-receive-pwm.c: 639: for (z1 = 0; z1 < 50; ++z1)
+      008973 1E 27            [ 2] 1820 	ldw	x, (0x27, sp)
+      008975 5C               [ 2] 1821 	incw	x
+      008976 1F 27            [ 2] 1822 	ldw	(0x27, sp), x
+      008978 20 F1            [ 2] 1823 	jra	00115$
+      00897A                       1824 00119$:
+                                   1825 ;	se8r01-receive-pwm.c: 638: for (y1 = 0; y1 < 50; ++y1)
+      00897A 1E 29            [ 2] 1826 	ldw	x, (0x29, sp)
+      00897C 5C               [ 2] 1827 	incw	x
+      00897D 1F 29            [ 2] 1828 	ldw	(0x29, sp), x
+      00897F 20 E0            [ 2] 1829 	jra	00118$
+      008981                       1830 00122$:
+                                   1831 ;	se8r01-receive-pwm.c: 637: for (x1 = 0; x1 < 50; ++x1)
+      008981 1E 2B            [ 2] 1832 	ldw	x, (0x2b, sp)
+      008983 5C               [ 2] 1833 	incw	x
+      008984 1F 2B            [ 2] 1834 	ldw	(0x2b, sp), x
+      008986 20 CC            [ 2] 1835 	jra	00121$
+      008988 5B 33            [ 2] 1836 	addw	sp, #51
+      00898A 81               [ 4] 1837 	ret
+                                   1838 	.area CODE
+      00898B                       1839 ___str_0:
+      00898B 73 74 61 72 74 20 64  1840 	.ascii "start debug "
+             65 62 75 67 20
+      008997 0A                    1841 	.db 0x0A
+      008998 0D                    1842 	.db 0x0D
+      008999 00                    1843 	.db 0x00
+      00899A                       1844 ___str_1:
+      00899A 63 6F 6E 66 69 67 20  1845 	.ascii "config = "
              3D 20
-      008982 0A                    1831 	.db 0x0A
-      008983 0D                    1832 	.db 0x0D
-      008984 00                    1833 	.db 0x00
-      008985                       1834 ___str_1:
-      008985 73 74 61 74 75 73 20  1835 	.ascii "status = "
+      0089A3 0A                    1846 	.db 0x0A
+      0089A4 0D                    1847 	.db 0x0D
+      0089A5 00                    1848 	.db 0x00
+      0089A6                       1849 ___str_2:
+      0089A6 73 74 61 74 75 73 20  1850 	.ascii "status = "
              3D 20
-      00898E 0A                    1836 	.db 0x0A
-      00898F 0D                    1837 	.db 0x0D
-      008990 00                    1838 	.db 0x00
-      008991                       1839 ___str_2:
-      008991 0A                    1840 	.db 0x0A
-      008992 0D                    1841 	.db 0x0D
-      008993 00                    1842 	.db 0x00
-                                   1843 	.area INITIALIZER
-      008A09                       1844 __xinit__SE8R01_DR_2M:
-      008A09 00 00                 1845 	.dw #0x0000
-      008A0B                       1846 __xinit__SE8R01_DR_1M:
-      008A0B 00 00                 1847 	.dw #0x0000
-      008A0D                       1848 __xinit__SE8R01_DR_500K:
-      008A0D 00 01                 1849 	.dw #0x0001
-      008A0F                       1850 __xinit__pload_width_now:
-      008A0F 00 00                 1851 	.dw #0x0000
-      008A11                       1852 __xinit__newdata:
-      008A11 00 00                 1853 	.dw #0x0000
-      008A13                       1854 __xinit__signal_lv:
-      008A13 00                    1855 	.db #0x00	;  0
-      008A14                       1856 __xinit__pip:
-      008A14 00 00                 1857 	.dw #0x0000
-      008A16                       1858 __xinit__status:
-      008A16 00                    1859 	.db #0x00	; 0
-      008A17                       1860 __xinit__TX_ADDRESS:
-      008A17 B3                    1861 	.db #0xB3	; 179
-      008A18 43                    1862 	.db #0x43	; 67	'C'
-      008A19 10                    1863 	.db #0x10	; 16
-      008A1A 10                    1864 	.db #0x10	; 16
-      008A1B                       1865 __xinit__ADDRESS2:
-      008A1B B1                    1866 	.db #0xB1	; 177
-      008A1C                       1867 __xinit__ADDRESS3:
-      008A1C B2                    1868 	.db #0xB2	; 178
-      008A1D                       1869 __xinit__ADDRESS4:
-      008A1D B3                    1870 	.db #0xB3	; 179
-      008A1E                       1871 __xinit__ADDRESS5:
-      008A1E B4                    1872 	.db #0xB4	; 180
-      008A1F                       1873 __xinit__ADDRESS1:
-      008A1F B0                    1874 	.db #0xB0	; 176
-      008A20 43                    1875 	.db #0x43	; 67	'C'
-      008A21 10                    1876 	.db #0x10	; 16
-      008A22 10                    1877 	.db #0x10	; 16
-      008A23                       1878 __xinit__ADDRESS0:
-      008A23 34                    1879 	.db #0x34	; 52	'4'
-      008A24 43                    1880 	.db #0x43	; 67	'C'
-      008A25 10                    1881 	.db #0x10	; 16
-      008A26 10                    1882 	.db #0x10	; 16
-      008A27                       1883 __xinit__rx_buf:
-      008A27 00                    1884 	.db #0x00	; 0
-      008A28 00                    1885 	.db 0x00
-      008A29 00                    1886 	.db 0x00
-      008A2A 00                    1887 	.db 0x00
-      008A2B 00                    1888 	.db 0x00
-      008A2C 00                    1889 	.db 0x00
-      008A2D 00                    1890 	.db 0x00
-      008A2E 00                    1891 	.db 0x00
-      008A2F 00                    1892 	.db 0x00
-      008A30 00                    1893 	.db 0x00
-      008A31 00                    1894 	.db 0x00
-      008A32 00                    1895 	.db 0x00
-      008A33 00                    1896 	.db 0x00
-      008A34 00                    1897 	.db 0x00
-      008A35 00                    1898 	.db 0x00
-      008A36 00                    1899 	.db 0x00
-      008A37 00                    1900 	.db 0x00
-      008A38 00                    1901 	.db 0x00
-      008A39 00                    1902 	.db 0x00
-      008A3A 00                    1903 	.db 0x00
-      008A3B 00                    1904 	.db 0x00
-      008A3C 00                    1905 	.db 0x00
-      008A3D 00                    1906 	.db 0x00
-      008A3E 00                    1907 	.db 0x00
-      008A3F 00                    1908 	.db 0x00
-      008A40 00                    1909 	.db 0x00
-      008A41 00                    1910 	.db 0x00
-      008A42 00                    1911 	.db 0x00
-      008A43 00                    1912 	.db 0x00
-      008A44 00                    1913 	.db 0x00
-      008A45 00                    1914 	.db 0x00
-      008A46 00                    1915 	.db 0x00
-      008A47                       1916 __xinit__tx_buf:
-      008A47 00                    1917 	.db #0x00	; 0
-      008A48 00                    1918 	.db 0x00
-      008A49 00                    1919 	.db 0x00
-      008A4A 00                    1920 	.db 0x00
-      008A4B 00                    1921 	.db 0x00
-      008A4C 00                    1922 	.db 0x00
-      008A4D 00                    1923 	.db 0x00
-      008A4E 00                    1924 	.db 0x00
-      008A4F 00                    1925 	.db 0x00
-      008A50 00                    1926 	.db 0x00
-      008A51 00                    1927 	.db 0x00
-      008A52 00                    1928 	.db 0x00
-      008A53 00                    1929 	.db 0x00
-      008A54 00                    1930 	.db 0x00
-      008A55 00                    1931 	.db 0x00
-      008A56 00                    1932 	.db 0x00
-      008A57 00                    1933 	.db 0x00
-      008A58 00                    1934 	.db 0x00
-      008A59 00                    1935 	.db 0x00
-      008A5A 00                    1936 	.db 0x00
-      008A5B 00                    1937 	.db 0x00
-      008A5C 00                    1938 	.db 0x00
-      008A5D 00                    1939 	.db 0x00
-      008A5E 00                    1940 	.db 0x00
-      008A5F 00                    1941 	.db 0x00
-      008A60 00                    1942 	.db 0x00
-      008A61 00                    1943 	.db 0x00
-      008A62 00                    1944 	.db 0x00
-      008A63 00                    1945 	.db 0x00
-      008A64 00                    1946 	.db 0x00
-      008A65 00                    1947 	.db 0x00
-      008A66 00                    1948 	.db 0x00
-                                   1949 	.area CABS (ABS)
+      0089AF 0A                    1851 	.db 0x0A
+      0089B0 0D                    1852 	.db 0x0D
+      0089B1 00                    1853 	.db 0x00
+      0089B2                       1854 ___str_3:
+      0089B2 74 69 6D 65 72 20 69  1855 	.ascii "timer initialised = "
+             6E 69 74 69 61 6C 69
+             73 65 64 20 3D 20
+      0089C6 0A                    1856 	.db 0x0A
+      0089C7 0D                    1857 	.db 0x0D
+      0089C8 00                    1858 	.db 0x00
+      0089C9                       1859 ___str_4:
+      0089C9 0A                    1860 	.db 0x0A
+      0089CA 0D                    1861 	.db 0x0D
+      0089CB 00                    1862 	.db 0x00
+                                   1863 	.area INITIALIZER
+      008A41                       1864 __xinit__SE8R01_DR_2M:
+      008A41 00 00                 1865 	.dw #0x0000
+      008A43                       1866 __xinit__SE8R01_DR_1M:
+      008A43 00 00                 1867 	.dw #0x0000
+      008A45                       1868 __xinit__SE8R01_DR_500K:
+      008A45 00 01                 1869 	.dw #0x0001
+      008A47                       1870 __xinit__pload_width_now:
+      008A47 00 00                 1871 	.dw #0x0000
+      008A49                       1872 __xinit__newdata:
+      008A49 00 00                 1873 	.dw #0x0000
+      008A4B                       1874 __xinit__signal_lv:
+      008A4B 00                    1875 	.db #0x00	;  0
+      008A4C                       1876 __xinit__pip:
+      008A4C 00 00                 1877 	.dw #0x0000
+      008A4E                       1878 __xinit__status:
+      008A4E 00                    1879 	.db #0x00	; 0
+      008A4F                       1880 __xinit__TX_ADDRESS:
+      008A4F B3                    1881 	.db #0xB3	; 179
+      008A50 43                    1882 	.db #0x43	; 67	'C'
+      008A51 10                    1883 	.db #0x10	; 16
+      008A52 10                    1884 	.db #0x10	; 16
+      008A53                       1885 __xinit__ADDRESS2:
+      008A53 B1                    1886 	.db #0xB1	; 177
+      008A54                       1887 __xinit__ADDRESS3:
+      008A54 B2                    1888 	.db #0xB2	; 178
+      008A55                       1889 __xinit__ADDRESS4:
+      008A55 B3                    1890 	.db #0xB3	; 179
+      008A56                       1891 __xinit__ADDRESS5:
+      008A56 B4                    1892 	.db #0xB4	; 180
+      008A57                       1893 __xinit__ADDRESS1:
+      008A57 B0                    1894 	.db #0xB0	; 176
+      008A58 43                    1895 	.db #0x43	; 67	'C'
+      008A59 10                    1896 	.db #0x10	; 16
+      008A5A 10                    1897 	.db #0x10	; 16
+      008A5B                       1898 __xinit__ADDRESS0:
+      008A5B 34                    1899 	.db #0x34	; 52	'4'
+      008A5C 43                    1900 	.db #0x43	; 67	'C'
+      008A5D 10                    1901 	.db #0x10	; 16
+      008A5E 10                    1902 	.db #0x10	; 16
+      008A5F                       1903 __xinit__rx_buf:
+      008A5F 00                    1904 	.db #0x00	; 0
+      008A60 00                    1905 	.db 0x00
+      008A61 00                    1906 	.db 0x00
+      008A62 00                    1907 	.db 0x00
+      008A63 00                    1908 	.db 0x00
+      008A64 00                    1909 	.db 0x00
+      008A65 00                    1910 	.db 0x00
+      008A66 00                    1911 	.db 0x00
+      008A67 00                    1912 	.db 0x00
+      008A68 00                    1913 	.db 0x00
+      008A69 00                    1914 	.db 0x00
+      008A6A 00                    1915 	.db 0x00
+      008A6B 00                    1916 	.db 0x00
+      008A6C 00                    1917 	.db 0x00
+      008A6D 00                    1918 	.db 0x00
+      008A6E 00                    1919 	.db 0x00
+      008A6F 00                    1920 	.db 0x00
+      008A70 00                    1921 	.db 0x00
+      008A71 00                    1922 	.db 0x00
+      008A72 00                    1923 	.db 0x00
+      008A73 00                    1924 	.db 0x00
+      008A74 00                    1925 	.db 0x00
+      008A75 00                    1926 	.db 0x00
+      008A76 00                    1927 	.db 0x00
+      008A77 00                    1928 	.db 0x00
+      008A78 00                    1929 	.db 0x00
+      008A79 00                    1930 	.db 0x00
+      008A7A 00                    1931 	.db 0x00
+      008A7B 00                    1932 	.db 0x00
+      008A7C 00                    1933 	.db 0x00
+      008A7D 00                    1934 	.db 0x00
+      008A7E 00                    1935 	.db 0x00
+      008A7F                       1936 __xinit__tx_buf:
+      008A7F 00                    1937 	.db #0x00	; 0
+      008A80 00                    1938 	.db 0x00
+      008A81 00                    1939 	.db 0x00
+      008A82 00                    1940 	.db 0x00
+      008A83 00                    1941 	.db 0x00
+      008A84 00                    1942 	.db 0x00
+      008A85 00                    1943 	.db 0x00
+      008A86 00                    1944 	.db 0x00
+      008A87 00                    1945 	.db 0x00
+      008A88 00                    1946 	.db 0x00
+      008A89 00                    1947 	.db 0x00
+      008A8A 00                    1948 	.db 0x00
+      008A8B 00                    1949 	.db 0x00
+      008A8C 00                    1950 	.db 0x00
+      008A8D 00                    1951 	.db 0x00
+      008A8E 00                    1952 	.db 0x00
+      008A8F 00                    1953 	.db 0x00
+      008A90 00                    1954 	.db 0x00
+      008A91 00                    1955 	.db 0x00
+      008A92 00                    1956 	.db 0x00
+      008A93 00                    1957 	.db 0x00
+      008A94 00                    1958 	.db 0x00
+      008A95 00                    1959 	.db 0x00
+      008A96 00                    1960 	.db 0x00
+      008A97 00                    1961 	.db 0x00
+      008A98 00                    1962 	.db 0x00
+      008A99 00                    1963 	.db 0x00
+      008A9A 00                    1964 	.db 0x00
+      008A9B 00                    1965 	.db 0x00
+      008A9C 00                    1966 	.db 0x00
+      008A9D 00                    1967 	.db 0x00
+      008A9E 00                    1968 	.db 0x00
+                                   1969 	.area CABS (ABS)
