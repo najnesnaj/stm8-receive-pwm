@@ -560,11 +560,13 @@ AFR1 Alternate function remapping option 1
 
 	TIM2_CCER2 |=0x03;//  Channel 3 enable, active low output configuration
 
-	// initialization clock divider is 1, the counter clock frequency is Fmaster=8M/64=0.125MHZ
-	TIM2_PSCR =0X04;// Automatic loading / / initialization register, PWM Fang Bo frequency, Fpwm=0.125M/62500=2HZ
-	TIM2_ARRH =62500/256; //auto reload register value
-	TIM2_ARRL =62500%256;
-	// compare register initialization, PWM Fang Bo decided the duty ratio: 5000/10000 = 50%
+	// timer clock is 2 MHZ
+	TIM2_PSCR =0X04;// 2 Mhz/4 = 500Khz 
+	TIM2_ARRH =62500/256; // auto reload register
+	TIM2_ARRL =62500%256; // 500 Khz/62500 is 8 events per second (blink a led)
+	// compare register initialization   duty cycle = 50%
+	//
+	// if decreased, duty cycle deminishes -- so from 0 to CCR3 is high, rest is low
 	TIM2_CCR3H =31250/256; //compare capture register value
 	TIM2_CCR3L =31250%256;
 
