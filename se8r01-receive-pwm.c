@@ -521,6 +521,11 @@ void SE8R01_Init()
 
 void Init_Tim2 ()
 { 
+	// pwm is not standard on pin PD2, but possible with setting option bytes 
+	//
+	// echo "00 00 ff 02 fd 00 ff 00 ff 00 ff" | xxd -r -p > factory_defaults.bin
+	// stm8flash -c stlinkv2 -p stm8s103f3 -s opt -w factory_defaults.bin
+	//
 	// It is possible to configure the AFR option byte to get channel 3 on PD2 also.
 	/*
 	 *
@@ -532,14 +537,16 @@ void Init_Tim2 ()
 http://www.icbase.com/File/PDF/STM/STM39221308.pdf
 
 
+pwm explained
+
+http://www.st.com/content/ccc/resource/technical/document/application_note/db/ec/7e/c8/57/b2/44/ee/CD00296680.pdf/files/CD00296680.pdf/jcr:content/translations/en.CD00296680.pdf
+
 OPT2 
 AFR1 Alternate function remapping option 1 
 0: AFR1 remapping option inactive: Default alternate functions
 1: Port A3 alternate function = TIM3_CH1; port D2 alternate function TIM2_CH3. 
 
 
-echo "00 00 ff 02 ff 00 ff 00 ff 00 ff" | xxd -r -p > factory_defaults.bin
-stm8flash -c stlinkv2 -p stm8s103f3 -s opt -w tools/stm8s103FactoryDefaults.bin
 
 
 

@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
-                                      3 ; Version 3.4.0 #8981 (Jul  5 2014) (Linux)
-                                      4 ; This file was generated Wed Jul  5 18:42:51 2017
+                                      3 ; Version 3.4.0 #8981 (Jul 11 2014) (Linux)
+                                      4 ; This file was generated Fri Jul  7 11:07:19 2017
                                       5 ;--------------------------------------------------------
                                       6 	.module se8r01_receive_pwm
                                       7 	.optsdcc -mstm8
@@ -1534,54 +1534,54 @@
                                    1534 ;	 function Init_Tim2
                                    1535 ;	-----------------------------------------
       0087C4                       1536 _Init_Tim2:
-                                   1537 ;	se8r01-receive-pwm.c: 551: TIM2_CCMR3 |=0X70;//Set the timer 2 / three channel three (PD2) output mode
+                                   1537 ;	se8r01-receive-pwm.c: 558: TIM2_CCMR3 |=0X70;//Set the timer 2 / three channel three (PD2) output mode
       0087C4 AE 53 09         [ 2] 1538 	ldw	x, #0x5309
       0087C7 F6               [ 1] 1539 	ld	a, (x)
       0087C8 AA 70            [ 1] 1540 	or	a, #0x70
       0087CA F7               [ 1] 1541 	ld	(x), a
-                                   1542 ;	se8r01-receive-pwm.c: 552: TIM2_CCMR3 |=0X04;//Comparison of 3 pre load / / output enable
+                                   1542 ;	se8r01-receive-pwm.c: 559: TIM2_CCMR3 |=0X04;//Comparison of 3 pre load / / output enable
       0087CB AE 53 09         [ 2] 1543 	ldw	x, #0x5309
       0087CE F6               [ 1] 1544 	ld	a, (x)
       0087CF AA 04            [ 1] 1545 	or	a, #0x04
       0087D1 F7               [ 1] 1546 	ld	(x), a
-                                   1547 ;	se8r01-receive-pwm.c: 554: TIM2_CCER2 |=0x03;//  Channel 3 enable, active low output configuration
+                                   1547 ;	se8r01-receive-pwm.c: 561: TIM2_CCER2 |=0x03;//  Channel 3 enable, active low output configuration
       0087D2 AE 53 0B         [ 2] 1548 	ldw	x, #0x530b
       0087D5 F6               [ 1] 1549 	ld	a, (x)
       0087D6 AA 03            [ 1] 1550 	or	a, #0x03
       0087D8 F7               [ 1] 1551 	ld	(x), a
-                                   1552 ;	se8r01-receive-pwm.c: 557: TIM2_PSCR =0X04;// Automatic loading / / initialization register, PWM Fang Bo frequency, Fpwm=0.125M/62500=2HZ
+                                   1552 ;	se8r01-receive-pwm.c: 564: TIM2_PSCR =0X04;// Automatic loading / / initialization register, PWM Fang Bo frequency, Fpwm=0.125M/62500=2HZ
       0087D9 AE 53 0E         [ 2] 1553 	ldw	x, #0x530e
       0087DC A6 04            [ 1] 1554 	ld	a, #0x04
       0087DE F7               [ 1] 1555 	ld	(x), a
-                                   1556 ;	se8r01-receive-pwm.c: 558: TIM2_ARRH =62500/256; //auto reload register value
+                                   1556 ;	se8r01-receive-pwm.c: 565: TIM2_ARRH =62500/256; //auto reload register value
       0087DF AE 53 0F         [ 2] 1557 	ldw	x, #0x530f
       0087E2 A6 F4            [ 1] 1558 	ld	a, #0xf4
       0087E4 F7               [ 1] 1559 	ld	(x), a
-                                   1560 ;	se8r01-receive-pwm.c: 559: TIM2_ARRL =62500%256;
+                                   1560 ;	se8r01-receive-pwm.c: 566: TIM2_ARRL =62500%256;
       0087E5 AE 53 10         [ 2] 1561 	ldw	x, #0x5310
       0087E8 A6 24            [ 1] 1562 	ld	a, #0x24
       0087EA F7               [ 1] 1563 	ld	(x), a
-                                   1564 ;	se8r01-receive-pwm.c: 561: TIM2_CCR3H =31250/256; //compare capture register value
+                                   1564 ;	se8r01-receive-pwm.c: 568: TIM2_CCR3H =31250/256; //compare capture register value
       0087EB AE 53 15         [ 2] 1565 	ldw	x, #0x5315
       0087EE A6 7A            [ 1] 1566 	ld	a, #0x7a
       0087F0 F7               [ 1] 1567 	ld	(x), a
-                                   1568 ;	se8r01-receive-pwm.c: 562: TIM2_CCR3L =31250%256;
+                                   1568 ;	se8r01-receive-pwm.c: 569: TIM2_CCR3L =31250%256;
       0087F1 AE 53 16         [ 2] 1569 	ldw	x, #0x5316
       0087F4 A6 12            [ 1] 1570 	ld	a, #0x12
       0087F6 F7               [ 1] 1571 	ld	(x), a
-                                   1572 ;	se8r01-receive-pwm.c: 566: TIM2_CR1 |=0x81;
+                                   1572 ;	se8r01-receive-pwm.c: 573: TIM2_CR1 |=0x81;
       0087F7 AE 53 00         [ 2] 1573 	ldw	x, #0x5300
       0087FA F6               [ 1] 1574 	ld	a, (x)
       0087FB AA 81            [ 1] 1575 	or	a, #0x81
       0087FD F7               [ 1] 1576 	ld	(x), a
       0087FE 81               [ 4] 1577 	ret
-                                   1578 ;	se8r01-receive-pwm.c: 573: int main () {
+                                   1578 ;	se8r01-receive-pwm.c: 580: int main () {
                                    1579 ;	-----------------------------------------
                                    1580 ;	 function main
                                    1581 ;	-----------------------------------------
       0087FF                       1582 _main:
       0087FF 52 33            [ 2] 1583 	sub	sp, #51
-                                   1584 ;	se8r01-receive-pwm.c: 575: UCHAR rx_addr_p1[]  = { 0xd2, 0xf0, 0xf0, 0xf0, 0xf0 };
+                                   1584 ;	se8r01-receive-pwm.c: 582: UCHAR rx_addr_p1[]  = { 0xd2, 0xf0, 0xf0, 0xf0, 0xf0 };
       008801 90 96            [ 1] 1585 	ldw	y, sp
       008803 72 A9 00 2D      [ 2] 1586 	addw	y, #45
       008807 A6 D2            [ 1] 1587 	ld	a, #0xd2
@@ -1601,7 +1601,7 @@
       00881B 93               [ 1] 1601 	ldw	x, y
       00881C A6 F0            [ 1] 1602 	ld	a, #0xf0
       00881E E7 04            [ 1] 1603 	ld	(0x0004, x), a
-                                   1604 ;	se8r01-receive-pwm.c: 576: UCHAR tx_addr[]     = { 0xe1, 0xf0, 0xf0, 0xf0, 0xf0 };
+                                   1604 ;	se8r01-receive-pwm.c: 583: UCHAR tx_addr[]     = { 0xe1, 0xf0, 0xf0, 0xf0, 0xf0 };
       008820 90 96            [ 1] 1605 	ldw	y, sp
       008822 72 A9 00 22      [ 2] 1606 	addw	y, #34
       008826 A6 E1            [ 1] 1607 	ld	a, #0xe1
@@ -1622,18 +1622,18 @@
       00883B 1C 00 04         [ 2] 1622 	addw	x, #0x0004
       00883E A6 F0            [ 1] 1623 	ld	a, #0xf0
       008840 F7               [ 1] 1624 	ld	(x), a
-                                   1625 ;	se8r01-receive-pwm.c: 581: InitializeSystemClock();
+                                   1625 ;	se8r01-receive-pwm.c: 588: InitializeSystemClock();
       008841 CD 81 E4         [ 4] 1626 	call	_InitializeSystemClock
-                                   1627 ;	se8r01-receive-pwm.c: 582: InitializeUART();
+                                   1627 ;	se8r01-receive-pwm.c: 589: InitializeUART();
       008844 CD 82 DC         [ 4] 1628 	call	_InitializeUART
-                                   1629 ;	se8r01-receive-pwm.c: 584: InitializeSPI ();
+                                   1629 ;	se8r01-receive-pwm.c: 591: InitializeSPI ();
       008847 CD 81 BC         [ 4] 1630 	call	_InitializeSPI
-                                   1631 ;	se8r01-receive-pwm.c: 586: UARTPrintF("start debug \n\r");
+                                   1631 ;	se8r01-receive-pwm.c: 593: UARTPrintF("start debug \n\r");
       00884A AE 89 8B         [ 2] 1632 	ldw	x, #___str_0+0
       00884D 89               [ 2] 1633 	pushw	x
       00884E CD 82 79         [ 4] 1634 	call	_UARTPrintF
       008851 5B 02            [ 2] 1635 	addw	sp, #2
-                                   1636 ;	se8r01-receive-pwm.c: 588: memset (tx_payload, 0, sizeof(tx_payload));
+                                   1636 ;	se8r01-receive-pwm.c: 595: memset (tx_payload, 0, sizeof(tx_payload));
       008853 96               [ 1] 1637 	ldw	x, sp
       008854 5C               [ 2] 1638 	incw	x
       008855 4B 21            [ 1] 1639 	push	#0x21
@@ -1643,110 +1643,110 @@
       00885D 89               [ 2] 1643 	pushw	x
       00885E CD 8A 22         [ 4] 1644 	call	_memset
       008861 5B 06            [ 2] 1645 	addw	sp, #6
-                                   1646 ;	se8r01-receive-pwm.c: 591: init_io();                        // Initialize IO port
+                                   1646 ;	se8r01-receive-pwm.c: 598: init_io();                        // Initialize IO port
       008863 CD 83 55         [ 4] 1647 	call	_init_io
-                                   1648 ;	se8r01-receive-pwm.c: 592: write_spi_reg(FLUSH_RX,0); // receive data 
+                                   1648 ;	se8r01-receive-pwm.c: 599: write_spi_reg(FLUSH_RX,0); // receive data 
       008866 4B 00            [ 1] 1649 	push	#0x00
       008868 4B E2            [ 1] 1650 	push	#0xe2
       00886A CD 80 CE         [ 4] 1651 	call	_write_spi_reg
       00886D 5B 02            [ 2] 1652 	addw	sp, #2
-                                   1653 ;	se8r01-receive-pwm.c: 593: readstatus = read_spi_reg(CONFIG);
+                                   1653 ;	se8r01-receive-pwm.c: 600: readstatus = read_spi_reg(CONFIG);
       00886F 4B 00            [ 1] 1654 	push	#0x00
       008871 CD 81 0A         [ 4] 1655 	call	_read_spi_reg
       008874 5B 01            [ 2] 1656 	addw	sp, #1
-                                   1657 ;	se8r01-receive-pwm.c: 594: UARTPrintF("config = \n\r");
+                                   1657 ;	se8r01-receive-pwm.c: 601: UARTPrintF("config = \n\r");
       008876 AE 89 9A         [ 2] 1658 	ldw	x, #___str_1+0
       008879 88               [ 1] 1659 	push	a
       00887A 89               [ 2] 1660 	pushw	x
       00887B CD 82 79         [ 4] 1661 	call	_UARTPrintF
       00887E 5B 02            [ 2] 1662 	addw	sp, #2
       008880 84               [ 1] 1663 	pop	a
-                                   1664 ;	se8r01-receive-pwm.c: 595: print_UCHAR_hex(readstatus);
+                                   1664 ;	se8r01-receive-pwm.c: 602: print_UCHAR_hex(readstatus);
       008881 88               [ 1] 1665 	push	a
       008882 CD 82 90         [ 4] 1666 	call	_print_UCHAR_hex
       008885 84               [ 1] 1667 	pop	a
-                                   1668 ;	se8r01-receive-pwm.c: 596: readstatus = read_spi_reg(STATUS);
+                                   1668 ;	se8r01-receive-pwm.c: 603: readstatus = read_spi_reg(STATUS);
       008886 4B 07            [ 1] 1669 	push	#0x07
       008888 CD 81 0A         [ 4] 1670 	call	_read_spi_reg
       00888B 5B 01            [ 2] 1671 	addw	sp, #1
-                                   1672 ;	se8r01-receive-pwm.c: 597: UARTPrintF("status = \n\r");
+                                   1672 ;	se8r01-receive-pwm.c: 604: UARTPrintF("status = \n\r");
       00888D AE 89 A6         [ 2] 1673 	ldw	x, #___str_2+0
       008890 88               [ 1] 1674 	push	a
       008891 89               [ 2] 1675 	pushw	x
       008892 CD 82 79         [ 4] 1676 	call	_UARTPrintF
       008895 5B 02            [ 2] 1677 	addw	sp, #2
       008897 84               [ 1] 1678 	pop	a
-                                   1679 ;	se8r01-receive-pwm.c: 598: print_UCHAR_hex(readstatus);
+                                   1679 ;	se8r01-receive-pwm.c: 605: print_UCHAR_hex(readstatus);
       008898 88               [ 1] 1680 	push	a
       008899 CD 82 90         [ 4] 1681 	call	_print_UCHAR_hex
       00889C 84               [ 1] 1682 	pop	a
-                                   1683 ;	se8r01-receive-pwm.c: 600: Init_Tim2 (); //pwm for led on pd2
+                                   1683 ;	se8r01-receive-pwm.c: 607: Init_Tim2 (); //pwm for led on pd2
       00889D CD 87 C4         [ 4] 1684 	call	_Init_Tim2
-                                   1685 ;	se8r01-receive-pwm.c: 601: PD_DDR |= (1<<2);
+                                   1685 ;	se8r01-receive-pwm.c: 608: PD_DDR |= (1<<2);
       0088A0 AE 50 11         [ 2] 1686 	ldw	x, #0x5011
       0088A3 F6               [ 1] 1687 	ld	a, (x)
       0088A4 AA 04            [ 1] 1688 	or	a, #0x04
       0088A6 F7               [ 1] 1689 	ld	(x), a
-                                   1690 ;	se8r01-receive-pwm.c: 602: PD_CR1 |= (1<<2);
+                                   1690 ;	se8r01-receive-pwm.c: 609: PD_CR1 |= (1<<2);
       0088A7 AE 50 12         [ 2] 1691 	ldw	x, #0x5012
       0088AA F6               [ 1] 1692 	ld	a, (x)
       0088AB AA 04            [ 1] 1693 	or	a, #0x04
       0088AD F7               [ 1] 1694 	ld	(x), a
-                                   1695 ;	se8r01-receive-pwm.c: 603: PD_CR2 &= 0xFD;
+                                   1695 ;	se8r01-receive-pwm.c: 610: PD_CR2 &= 0xFD;
       0088AE AE 50 13         [ 2] 1696 	ldw	x, #0x5013
       0088B1 F6               [ 1] 1697 	ld	a, (x)
       0088B2 A4 FD            [ 1] 1698 	and	a, #0xfd
       0088B4 F7               [ 1] 1699 	ld	(x), a
-                                   1700 ;	se8r01-receive-pwm.c: 604: SE8R01_Init();
+                                   1700 ;	se8r01-receive-pwm.c: 611: SE8R01_Init();
       0088B5 CD 86 DE         [ 4] 1701 	call	_SE8R01_Init
-                                   1702 ;	se8r01-receive-pwm.c: 605: UARTPrintF("timer initialised = \n\r");
+                                   1702 ;	se8r01-receive-pwm.c: 612: UARTPrintF("timer initialised = \n\r");
       0088B8 AE 89 B2         [ 2] 1703 	ldw	x, #___str_3+0
       0088BB 89               [ 2] 1704 	pushw	x
       0088BC CD 82 79         [ 4] 1705 	call	_UARTPrintF
       0088BF 5B 02            [ 2] 1706 	addw	sp, #2
-                                   1707 ;	se8r01-receive-pwm.c: 608: while (1) {
+                                   1707 ;	se8r01-receive-pwm.c: 615: while (1) {
       0088C1                       1708 00110$:
-                                   1709 ;	se8r01-receive-pwm.c: 610: if ((PD_IDR & (1 << 3))==0) //input low
+                                   1709 ;	se8r01-receive-pwm.c: 617: if ((PD_IDR & (1 << 3))==0) //input low
       0088C1 AE 50 10         [ 2] 1710 	ldw	x, #0x5010
       0088C4 F6               [ 1] 1711 	ld	a, (x)
       0088C5 A5 08            [ 1] 1712 	bcp	a, #0x08
       0088C7 27 03            [ 1] 1713 	jreq	00170$
       0088C9 CC 89 51         [ 2] 1714 	jp	00105$
       0088CC                       1715 00170$:
-                                   1716 ;	se8r01-receive-pwm.c: 614: delay(240);
+                                   1716 ;	se8r01-receive-pwm.c: 621: delay(240);
       0088CC 4B F0            [ 1] 1717 	push	#0xf0
       0088CE 4B 00            [ 1] 1718 	push	#0x00
       0088D0 CD 82 2E         [ 4] 1719 	call	_delay
       0088D3 5B 02            [ 2] 1720 	addw	sp, #2
-                                   1721 ;	se8r01-receive-pwm.c: 615: signal_lv=read_spi_reg(iRF_BANK0_RPD);
+                                   1721 ;	se8r01-receive-pwm.c: 622: signal_lv=read_spi_reg(iRF_BANK0_RPD);
       0088D5 4B 09            [ 1] 1722 	push	#0x09
       0088D7 CD 81 0A         [ 4] 1723 	call	_read_spi_reg
       0088DA 5B 01            [ 2] 1724 	addw	sp, #1
       0088DC C7 00 1A         [ 1] 1725 	ld	_signal_lv+0, a
-                                   1726 ;	se8r01-receive-pwm.c: 616: status = read_spi_reg(STATUS);
+                                   1726 ;	se8r01-receive-pwm.c: 623: status = read_spi_reg(STATUS);
       0088DF 4B 07            [ 1] 1727 	push	#0x07
       0088E1 CD 81 0A         [ 4] 1728 	call	_read_spi_reg
       0088E4 5B 01            [ 2] 1729 	addw	sp, #1
       0088E6 C7 00 1D         [ 1] 1730 	ld	_status+0, a
-                                   1731 ;	se8r01-receive-pwm.c: 618: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
+                                   1731 ;	se8r01-receive-pwm.c: 625: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
       0088E9 72 06 00 1D 02   [ 2] 1732 	btjt	_status+0, #6, 00171$
       0088EE 20 57            [ 2] 1733 	jra	00103$
       0088F0                       1734 00171$:
-                                   1735 ;	se8r01-receive-pwm.c: 621: pip= (status & 0b00001110)>>1;
+                                   1735 ;	se8r01-receive-pwm.c: 628: pip= (status & 0b00001110)>>1;
       0088F0 C6 00 1D         [ 1] 1736 	ld	a, _status+0
       0088F3 A4 0E            [ 1] 1737 	and	a, #0x0e
       0088F5 44               [ 1] 1738 	srl	a
       0088F6 5F               [ 1] 1739 	clrw	x
       0088F7 97               [ 1] 1740 	ld	xl, a
       0088F8 CF 00 1B         [ 2] 1741 	ldw	_pip+0, x
-                                   1742 ;	se8r01-receive-pwm.c: 622: pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
+                                   1742 ;	se8r01-receive-pwm.c: 629: pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
       0088FB 4B 60            [ 1] 1743 	push	#0x60
       0088FD CD 81 0A         [ 4] 1744 	call	_read_spi_reg
       008900 5B 01            [ 2] 1745 	addw	sp, #1
       008902 5F               [ 1] 1746 	clrw	x
       008903 97               [ 1] 1747 	ld	xl, a
       008904 CF 00 16         [ 2] 1748 	ldw	_pload_width_now+0, x
-                                   1749 ;	se8r01-receive-pwm.c: 623: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
+                                   1749 ;	se8r01-receive-pwm.c: 630: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
       008907 AE 00 2E         [ 2] 1750 	ldw	x, #_rx_buf+0
       00890A 1F 32            [ 2] 1751 	ldw	(0x32, sp), x
       00890C 1E 32            [ 2] 1752 	ldw	x, (0x32, sp)
@@ -1755,18 +1755,18 @@
       008911 4B 61            [ 1] 1755 	push	#0x61
       008913 CD 81 80         [ 4] 1756 	call	_read_spi_buf
       008916 5B 04            [ 2] 1757 	addw	sp, #4
-                                   1758 ;	se8r01-receive-pwm.c: 624: write_spi_reg(FLUSH_RX,0);
+                                   1758 ;	se8r01-receive-pwm.c: 631: write_spi_reg(FLUSH_RX,0);
       008918 4B 00            [ 1] 1759 	push	#0x00
       00891A 4B E2            [ 1] 1760 	push	#0xe2
       00891C CD 80 CE         [ 4] 1761 	call	_write_spi_reg
       00891F 5B 02            [ 2] 1762 	addw	sp, #2
-                                   1763 ;	se8r01-receive-pwm.c: 626: newdata=1;
+                                   1763 ;	se8r01-receive-pwm.c: 633: newdata=1;
       008921 35 01 00 19      [ 1] 1764 	mov	_newdata+1, #0x01
       008925 72 5F 00 18      [ 1] 1765 	clr	_newdata+0
-                                   1766 ;	se8r01-receive-pwm.c: 627: for (teller=0;teller<32;++teller)
+                                   1766 ;	se8r01-receive-pwm.c: 634: for (teller=0;teller<32;++teller)
       008929 5F               [ 1] 1767 	clrw	x
       00892A                       1768 00112$:
-                                   1769 ;	se8r01-receive-pwm.c: 628: print_UCHAR_hex (rx_buf[teller]);
+                                   1769 ;	se8r01-receive-pwm.c: 635: print_UCHAR_hex (rx_buf[teller]);
       00892A 90 93            [ 1] 1770 	ldw	y, x
       00892C 72 F9 32         [ 2] 1771 	addw	y, (0x32, sp)
       00892F 90 F6            [ 1] 1772 	ld	a, (y)
@@ -1775,23 +1775,23 @@
       008933 CD 82 90         [ 4] 1775 	call	_print_UCHAR_hex
       008936 84               [ 1] 1776 	pop	a
       008937 85               [ 2] 1777 	popw	x
-                                   1778 ;	se8r01-receive-pwm.c: 627: for (teller=0;teller<32;++teller)
+                                   1778 ;	se8r01-receive-pwm.c: 634: for (teller=0;teller<32;++teller)
       008938 5C               [ 2] 1779 	incw	x
       008939 A3 00 20         [ 2] 1780 	cpw	x, #0x0020
       00893C 2F EC            [ 1] 1781 	jrslt	00112$
-                                   1782 ;	se8r01-receive-pwm.c: 629: UARTPrintF("\n\r");
+                                   1782 ;	se8r01-receive-pwm.c: 636: UARTPrintF("\n\r");
       00893E AE 89 C9         [ 2] 1783 	ldw	x, #___str_4+0
       008941 89               [ 2] 1784 	pushw	x
       008942 CD 82 79         [ 4] 1785 	call	_UARTPrintF
       008945 5B 02            [ 2] 1786 	addw	sp, #2
       008947                       1787 00103$:
-                                   1788 ;	se8r01-receive-pwm.c: 632: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
+                                   1788 ;	se8r01-receive-pwm.c: 639: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
       008947 3B 00 1D         [ 1] 1789 	push	_status+0
       00894A 4B 27            [ 1] 1790 	push	#0x27
       00894C CD 80 CE         [ 4] 1791 	call	_write_spi_reg
       00894F 5B 02            [ 2] 1792 	addw	sp, #2
       008951                       1793 00105$:
-                                   1794 ;	se8r01-receive-pwm.c: 637: for (x1 = 0; x1 < 50; ++x1)
+                                   1794 ;	se8r01-receive-pwm.c: 644: for (x1 = 0; x1 < 50; ++x1)
       008951 5F               [ 1] 1795 	clrw	x
       008952 1F 2B            [ 2] 1796 	ldw	(0x2b, sp), x
       008954                       1797 00121$:
@@ -1800,35 +1800,35 @@
       008959 2F 03            [ 1] 1800 	jrslt	00173$
       00895B CC 88 C1         [ 2] 1801 	jp	00110$
       00895E                       1802 00173$:
-                                   1803 ;	se8r01-receive-pwm.c: 638: for (y1 = 0; y1 < 50; ++y1)
+                                   1803 ;	se8r01-receive-pwm.c: 645: for (y1 = 0; y1 < 50; ++y1)
       00895E 5F               [ 1] 1804 	clrw	x
       00895F 1F 29            [ 2] 1805 	ldw	(0x29, sp), x
       008961                       1806 00118$:
       008961 1E 29            [ 2] 1807 	ldw	x, (0x29, sp)
       008963 A3 00 32         [ 2] 1808 	cpw	x, #0x0032
       008966 2E 19            [ 1] 1809 	jrsge	00122$
-                                   1810 ;	se8r01-receive-pwm.c: 639: for (z1 = 0; z1 < 50; ++z1)
+                                   1810 ;	se8r01-receive-pwm.c: 646: for (z1 = 0; z1 < 50; ++z1)
       008968 5F               [ 1] 1811 	clrw	x
       008969 1F 27            [ 2] 1812 	ldw	(0x27, sp), x
       00896B                       1813 00115$:
       00896B 1E 27            [ 2] 1814 	ldw	x, (0x27, sp)
       00896D A3 00 32         [ 2] 1815 	cpw	x, #0x0032
       008970 2E 08            [ 1] 1816 	jrsge	00119$
-                                   1817 ;	se8r01-receive-pwm.c: 640: __asm__("nop");
+                                   1817 ;	se8r01-receive-pwm.c: 647: __asm__("nop");
       008972 9D               [ 1] 1818 	nop
-                                   1819 ;	se8r01-receive-pwm.c: 639: for (z1 = 0; z1 < 50; ++z1)
+                                   1819 ;	se8r01-receive-pwm.c: 646: for (z1 = 0; z1 < 50; ++z1)
       008973 1E 27            [ 2] 1820 	ldw	x, (0x27, sp)
       008975 5C               [ 2] 1821 	incw	x
       008976 1F 27            [ 2] 1822 	ldw	(0x27, sp), x
       008978 20 F1            [ 2] 1823 	jra	00115$
       00897A                       1824 00119$:
-                                   1825 ;	se8r01-receive-pwm.c: 638: for (y1 = 0; y1 < 50; ++y1)
+                                   1825 ;	se8r01-receive-pwm.c: 645: for (y1 = 0; y1 < 50; ++y1)
       00897A 1E 29            [ 2] 1826 	ldw	x, (0x29, sp)
       00897C 5C               [ 2] 1827 	incw	x
       00897D 1F 29            [ 2] 1828 	ldw	(0x29, sp), x
       00897F 20 E0            [ 2] 1829 	jra	00118$
       008981                       1830 00122$:
-                                   1831 ;	se8r01-receive-pwm.c: 637: for (x1 = 0; x1 < 50; ++x1)
+                                   1831 ;	se8r01-receive-pwm.c: 644: for (x1 = 0; x1 < 50; ++x1)
       008981 1E 2B            [ 2] 1832 	ldw	x, (0x2b, sp)
       008983 5C               [ 2] 1833 	incw	x
       008984 1F 2B            [ 2] 1834 	ldw	(0x2b, sp), x
