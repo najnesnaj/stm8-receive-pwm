@@ -560,10 +560,9 @@ AFR1 Alternate function remapping option 1
 
 	TIM2_CCER2 |=0x03;//  Channel 3 enable, active low output configuration
 
-	// timer clock is 2 MHZ
-	TIM2_PSCR =0X04;// 2 Mhz/4 = 500Khz 
+	TIM2_PSCR =0X04;// 16 Mhz/2^4 =  1Mhz  -- the prescaler is a 4 bit number!
 	TIM2_ARRH =62500/256; // auto reload register
-	TIM2_ARRL =62500%256; // 500 Khz/62500 is 8 events per second (blink a led)
+	TIM2_ARRL =62500%256; // 1000 Khz/62500 is 16 events per second (blink a led)
 	// compare register initialization   duty cycle = 50%
 	//
 	// if decreased, duty cycle deminishes -- so from 0 to CCR3 is high, rest is low
