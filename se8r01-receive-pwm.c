@@ -4,8 +4,8 @@
 
    1 VCC
    2 GND
-   3 CE      PC4
-   4 CSN     PC3
+   3 CE      PC3
+   4 CSN     PC4
    5 SCK     PC5
    6 MOSI    PC6
    7 MISO    PC7
@@ -33,8 +33,8 @@
 #define OSS		3
 #define PC3		3
 #define PC4		4
-#define CSN		3
-#define CE		4
+#define CSN		4
+#define CE		3
 #define BH1750_HRES2_ONETIME	0x23
 #define BH1750_POWERON		0x01
 #define MCP4725_CMD_WRITEDAC	0x40

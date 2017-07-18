@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Jul 11 2014) (Linux)
-; This file was generated Fri Jul  7 11:07:19 2017
+; This file was generated Tue Jul 18 13:43:12 2017
 ;--------------------------------------------------------
 	.module se8r01_receive_pwm
 	.optsdcc -mstm8
@@ -243,7 +243,7 @@ _write_spi_reg:
 ;	se8r01-receive-pwm.c: 65: PC_ODR &= ~(1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xf7
+	and	a, #0xef
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 66: ret = write_spi (reg);
 	ld	a, (0x04, sp)
@@ -274,7 +274,7 @@ _write_spi_reg:
 ;	se8r01-receive-pwm.c: 71: PC_ODR |= (1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x08
+	or	a, #0x10
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 72: return (ret);
 	ld	a, (0x01, sp)
@@ -289,7 +289,7 @@ _read_spi_reg:
 ;	se8r01-receive-pwm.c: 76: PC_ODR &= ~(1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xf7
+	and	a, #0xef
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 77: ret = write_spi (reg);
 	ld	a, (0x04, sp)
@@ -320,7 +320,7 @@ _read_spi_reg:
 ;	se8r01-receive-pwm.c: 82: PC_ODR |= (1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x08
+	or	a, #0x10
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 83: return (ret);
 	ld	a, (0x01, sp)
@@ -335,7 +335,7 @@ _write_spi_buf:
 ;	se8r01-receive-pwm.c: 87: PC_ODR &= ~(1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xf7
+	and	a, #0xef
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 88: ret = write_spi (reg);
 	ld	a, (0x05, sp)
@@ -365,7 +365,7 @@ _write_spi_buf:
 ;	se8r01-receive-pwm.c: 91: PC_ODR |= (1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x08
+	or	a, #0x10
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 92: return (ret);
 	ld	a, (0x02, sp)
@@ -380,7 +380,7 @@ _read_spi_buf:
 ;	se8r01-receive-pwm.c: 96: PC_ODR &= ~(1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xf7
+	and	a, #0xef
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 97: ret = write_spi (reg);
 	ld	a, (0x05, sp)
@@ -412,7 +412,7 @@ _read_spi_buf:
 ;	se8r01-receive-pwm.c: 100: PC_ODR |= (1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x08
+	or	a, #0x10
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 101: return (ret);
 	ld	a, (0x01, sp)
@@ -448,7 +448,7 @@ _InitializeSPI:
 ;	se8r01-receive-pwm.c: 111: PC_ODR &= ~(1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xef
+	and	a, #0xf7
 	ld	(x), a
 	ret
 ;	se8r01-receive-pwm.c: 113: void InitializeSystemClock() {
@@ -762,12 +762,12 @@ _init_io:
 ;	se8r01-receive-pwm.c: 287: PC_ODR &= ~(1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xef
+	and	a, #0xf7
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 289: PC_ODR |= (1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x08
+	or	a, #0x10
 	ld	(x), a
 	ret
 ;	se8r01-receive-pwm.c: 295: void rf_switch_bank(unsigned char bankindex)
@@ -1073,7 +1073,7 @@ _SE8R01_Calibration:
 ;	se8r01-receive-pwm.c: 392: PC_ODR |= (1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x10
+	or	a, #0x08
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 393: delayTenMicro();
 	call	_delayTenMicro
@@ -1084,7 +1084,7 @@ _SE8R01_Calibration:
 ;	se8r01-receive-pwm.c: 396: PC_ODR &= ~(1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xef
+	and	a, #0xf7
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 397: delay(50);                            // delay 50ms waitting for calibaration.
 	push	#0x32
@@ -1096,7 +1096,7 @@ _SE8R01_Calibration:
 ;	se8r01-receive-pwm.c: 403: PC_ODR |= (1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x10
+	or	a, #0x08
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 404: delayTenMicro();
 	call	_delayTenMicro
@@ -1107,7 +1107,7 @@ _SE8R01_Calibration:
 ;	se8r01-receive-pwm.c: 407: PC_ODR &= ~(1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xef
+	and	a, #0xf7
 	ld	(x), a
 ;	se8r01-receive-pwm.c: 408: delay(50);                            // delay 50ms waitting for calibaration.
 	push	#0x32
@@ -1525,7 +1525,7 @@ _SE8R01_Init:
 ;	se8r01-receive-pwm.c: 517: PC_ODR |= (1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x10
+	or	a, #0x08
 	ld	(x), a
 	addw	sp, #5
 	ret
@@ -1549,39 +1549,39 @@ _Init_Tim2:
 	ld	a, (x)
 	or	a, #0x03
 	ld	(x), a
-;	se8r01-receive-pwm.c: 564: TIM2_PSCR =0X04;// Automatic loading / / initialization register, PWM Fang Bo frequency, Fpwm=0.125M/62500=2HZ
+;	se8r01-receive-pwm.c: 563: TIM2_PSCR =0X04;// 16 Mhz/2^4 =  1Mhz  -- the prescaler is a 4 bit number!
 	ldw	x, #0x530e
 	ld	a, #0x04
 	ld	(x), a
-;	se8r01-receive-pwm.c: 565: TIM2_ARRH =62500/256; //auto reload register value
+;	se8r01-receive-pwm.c: 564: TIM2_ARRH =62500/256; // auto reload register
 	ldw	x, #0x530f
 	ld	a, #0xf4
 	ld	(x), a
-;	se8r01-receive-pwm.c: 566: TIM2_ARRL =62500%256;
+;	se8r01-receive-pwm.c: 565: TIM2_ARRL =62500%256; // 1000 Khz/62500 is 16 events per second (blink a led)
 	ldw	x, #0x5310
 	ld	a, #0x24
 	ld	(x), a
-;	se8r01-receive-pwm.c: 568: TIM2_CCR3H =31250/256; //compare capture register value
+;	se8r01-receive-pwm.c: 569: TIM2_CCR3H =31250/256; //compare capture register value
 	ldw	x, #0x5315
 	ld	a, #0x7a
 	ld	(x), a
-;	se8r01-receive-pwm.c: 569: TIM2_CCR3L =31250%256;
+;	se8r01-receive-pwm.c: 570: TIM2_CCR3L =31250%256;
 	ldw	x, #0x5316
 	ld	a, #0x12
 	ld	(x), a
-;	se8r01-receive-pwm.c: 573: TIM2_CR1 |=0x81;
+;	se8r01-receive-pwm.c: 574: TIM2_CR1 |=0x81;
 	ldw	x, #0x5300
 	ld	a, (x)
 	or	a, #0x81
 	ld	(x), a
 	ret
-;	se8r01-receive-pwm.c: 580: int main () {
+;	se8r01-receive-pwm.c: 581: int main () {
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
 	sub	sp, #51
-;	se8r01-receive-pwm.c: 582: UCHAR rx_addr_p1[]  = { 0xd2, 0xf0, 0xf0, 0xf0, 0xf0 };
+;	se8r01-receive-pwm.c: 583: UCHAR rx_addr_p1[]  = { 0xd2, 0xf0, 0xf0, 0xf0, 0xf0 };
 	ldw	y, sp
 	addw	y, #45
 	ld	a, #0xd2
@@ -1601,7 +1601,7 @@ _main:
 	ldw	x, y
 	ld	a, #0xf0
 	ld	(0x0004, x), a
-;	se8r01-receive-pwm.c: 583: UCHAR tx_addr[]     = { 0xe1, 0xf0, 0xf0, 0xf0, 0xf0 };
+;	se8r01-receive-pwm.c: 584: UCHAR tx_addr[]     = { 0xe1, 0xf0, 0xf0, 0xf0, 0xf0 };
 	ldw	y, sp
 	addw	y, #34
 	ld	a, #0xe1
@@ -1622,18 +1622,18 @@ _main:
 	addw	x, #0x0004
 	ld	a, #0xf0
 	ld	(x), a
-;	se8r01-receive-pwm.c: 588: InitializeSystemClock();
+;	se8r01-receive-pwm.c: 589: InitializeSystemClock();
 	call	_InitializeSystemClock
-;	se8r01-receive-pwm.c: 589: InitializeUART();
+;	se8r01-receive-pwm.c: 590: InitializeUART();
 	call	_InitializeUART
-;	se8r01-receive-pwm.c: 591: InitializeSPI ();
+;	se8r01-receive-pwm.c: 592: InitializeSPI ();
 	call	_InitializeSPI
-;	se8r01-receive-pwm.c: 593: UARTPrintF("start debug \n\r");
+;	se8r01-receive-pwm.c: 594: UARTPrintF("start debug \n\r");
 	ldw	x, #___str_0+0
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
-;	se8r01-receive-pwm.c: 595: memset (tx_payload, 0, sizeof(tx_payload));
+;	se8r01-receive-pwm.c: 596: memset (tx_payload, 0, sizeof(tx_payload));
 	ldw	x, sp
 	incw	x
 	push	#0x21
@@ -1643,110 +1643,110 @@ _main:
 	pushw	x
 	call	_memset
 	addw	sp, #6
-;	se8r01-receive-pwm.c: 598: init_io();                        // Initialize IO port
+;	se8r01-receive-pwm.c: 599: init_io();                        // Initialize IO port
 	call	_init_io
-;	se8r01-receive-pwm.c: 599: write_spi_reg(FLUSH_RX,0); // receive data 
+;	se8r01-receive-pwm.c: 600: write_spi_reg(FLUSH_RX,0); // receive data 
 	push	#0x00
 	push	#0xe2
 	call	_write_spi_reg
 	addw	sp, #2
-;	se8r01-receive-pwm.c: 600: readstatus = read_spi_reg(CONFIG);
+;	se8r01-receive-pwm.c: 601: readstatus = read_spi_reg(CONFIG);
 	push	#0x00
 	call	_read_spi_reg
 	addw	sp, #1
-;	se8r01-receive-pwm.c: 601: UARTPrintF("config = \n\r");
+;	se8r01-receive-pwm.c: 602: UARTPrintF("config = \n\r");
 	ldw	x, #___str_1+0
 	push	a
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
 	pop	a
-;	se8r01-receive-pwm.c: 602: print_UCHAR_hex(readstatus);
+;	se8r01-receive-pwm.c: 603: print_UCHAR_hex(readstatus);
 	push	a
 	call	_print_UCHAR_hex
 	pop	a
-;	se8r01-receive-pwm.c: 603: readstatus = read_spi_reg(STATUS);
+;	se8r01-receive-pwm.c: 604: readstatus = read_spi_reg(STATUS);
 	push	#0x07
 	call	_read_spi_reg
 	addw	sp, #1
-;	se8r01-receive-pwm.c: 604: UARTPrintF("status = \n\r");
+;	se8r01-receive-pwm.c: 605: UARTPrintF("status = \n\r");
 	ldw	x, #___str_2+0
 	push	a
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
 	pop	a
-;	se8r01-receive-pwm.c: 605: print_UCHAR_hex(readstatus);
+;	se8r01-receive-pwm.c: 606: print_UCHAR_hex(readstatus);
 	push	a
 	call	_print_UCHAR_hex
 	pop	a
-;	se8r01-receive-pwm.c: 607: Init_Tim2 (); //pwm for led on pd2
+;	se8r01-receive-pwm.c: 608: Init_Tim2 (); //pwm for led on pd2
 	call	_Init_Tim2
-;	se8r01-receive-pwm.c: 608: PD_DDR |= (1<<2);
+;	se8r01-receive-pwm.c: 609: PD_DDR |= (1<<2);
 	ldw	x, #0x5011
 	ld	a, (x)
 	or	a, #0x04
 	ld	(x), a
-;	se8r01-receive-pwm.c: 609: PD_CR1 |= (1<<2);
+;	se8r01-receive-pwm.c: 610: PD_CR1 |= (1<<2);
 	ldw	x, #0x5012
 	ld	a, (x)
 	or	a, #0x04
 	ld	(x), a
-;	se8r01-receive-pwm.c: 610: PD_CR2 &= 0xFD;
+;	se8r01-receive-pwm.c: 611: PD_CR2 &= 0xFD;
 	ldw	x, #0x5013
 	ld	a, (x)
 	and	a, #0xfd
 	ld	(x), a
-;	se8r01-receive-pwm.c: 611: SE8R01_Init();
+;	se8r01-receive-pwm.c: 612: SE8R01_Init();
 	call	_SE8R01_Init
-;	se8r01-receive-pwm.c: 612: UARTPrintF("timer initialised = \n\r");
+;	se8r01-receive-pwm.c: 613: UARTPrintF("timer initialised = \n\r");
 	ldw	x, #___str_3+0
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
-;	se8r01-receive-pwm.c: 615: while (1) {
+;	se8r01-receive-pwm.c: 616: while (1) {
 00110$:
-;	se8r01-receive-pwm.c: 617: if ((PD_IDR & (1 << 3))==0) //input low
+;	se8r01-receive-pwm.c: 618: if ((PD_IDR & (1 << 3))==0) //input low
 	ldw	x, #0x5010
 	ld	a, (x)
 	bcp	a, #0x08
 	jreq	00170$
 	jp	00105$
 00170$:
-;	se8r01-receive-pwm.c: 621: delay(240);
+;	se8r01-receive-pwm.c: 622: delay(240);
 	push	#0xf0
 	push	#0x00
 	call	_delay
 	addw	sp, #2
-;	se8r01-receive-pwm.c: 622: signal_lv=read_spi_reg(iRF_BANK0_RPD);
+;	se8r01-receive-pwm.c: 623: signal_lv=read_spi_reg(iRF_BANK0_RPD);
 	push	#0x09
 	call	_read_spi_reg
 	addw	sp, #1
 	ld	_signal_lv+0, a
-;	se8r01-receive-pwm.c: 623: status = read_spi_reg(STATUS);
+;	se8r01-receive-pwm.c: 624: status = read_spi_reg(STATUS);
 	push	#0x07
 	call	_read_spi_reg
 	addw	sp, #1
 	ld	_status+0, a
-;	se8r01-receive-pwm.c: 625: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
+;	se8r01-receive-pwm.c: 626: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
 	btjt	_status+0, #6, 00171$
 	jra	00103$
 00171$:
-;	se8r01-receive-pwm.c: 628: pip= (status & 0b00001110)>>1;
+;	se8r01-receive-pwm.c: 629: pip= (status & 0b00001110)>>1;
 	ld	a, _status+0
 	and	a, #0x0e
 	srl	a
 	clrw	x
 	ld	xl, a
 	ldw	_pip+0, x
-;	se8r01-receive-pwm.c: 629: pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
+;	se8r01-receive-pwm.c: 630: pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
 	push	#0x60
 	call	_read_spi_reg
 	addw	sp, #1
 	clrw	x
 	ld	xl, a
 	ldw	_pload_width_now+0, x
-;	se8r01-receive-pwm.c: 630: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
+;	se8r01-receive-pwm.c: 631: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
 	ldw	x, #_rx_buf+0
 	ldw	(0x32, sp), x
 	ldw	x, (0x32, sp)
@@ -1755,18 +1755,18 @@ _main:
 	push	#0x61
 	call	_read_spi_buf
 	addw	sp, #4
-;	se8r01-receive-pwm.c: 631: write_spi_reg(FLUSH_RX,0);
+;	se8r01-receive-pwm.c: 632: write_spi_reg(FLUSH_RX,0);
 	push	#0x00
 	push	#0xe2
 	call	_write_spi_reg
 	addw	sp, #2
-;	se8r01-receive-pwm.c: 633: newdata=1;
+;	se8r01-receive-pwm.c: 634: newdata=1;
 	mov	_newdata+1, #0x01
 	clr	_newdata+0
-;	se8r01-receive-pwm.c: 634: for (teller=0;teller<32;++teller)
+;	se8r01-receive-pwm.c: 635: for (teller=0;teller<32;++teller)
 	clrw	x
 00112$:
-;	se8r01-receive-pwm.c: 635: print_UCHAR_hex (rx_buf[teller]);
+;	se8r01-receive-pwm.c: 636: print_UCHAR_hex (rx_buf[teller]);
 	ldw	y, x
 	addw	y, (0x32, sp)
 	ld	a, (y)
@@ -1775,23 +1775,23 @@ _main:
 	call	_print_UCHAR_hex
 	pop	a
 	popw	x
-;	se8r01-receive-pwm.c: 634: for (teller=0;teller<32;++teller)
+;	se8r01-receive-pwm.c: 635: for (teller=0;teller<32;++teller)
 	incw	x
 	cpw	x, #0x0020
 	jrslt	00112$
-;	se8r01-receive-pwm.c: 636: UARTPrintF("\n\r");
+;	se8r01-receive-pwm.c: 637: UARTPrintF("\n\r");
 	ldw	x, #___str_4+0
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
 00103$:
-;	se8r01-receive-pwm.c: 639: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
+;	se8r01-receive-pwm.c: 640: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
 	push	_status+0
 	push	#0x27
 	call	_write_spi_reg
 	addw	sp, #2
 00105$:
-;	se8r01-receive-pwm.c: 644: for (x1 = 0; x1 < 50; ++x1)
+;	se8r01-receive-pwm.c: 645: for (x1 = 0; x1 < 50; ++x1)
 	clrw	x
 	ldw	(0x2b, sp), x
 00121$:
@@ -1800,35 +1800,35 @@ _main:
 	jrslt	00173$
 	jp	00110$
 00173$:
-;	se8r01-receive-pwm.c: 645: for (y1 = 0; y1 < 50; ++y1)
+;	se8r01-receive-pwm.c: 646: for (y1 = 0; y1 < 50; ++y1)
 	clrw	x
 	ldw	(0x29, sp), x
 00118$:
 	ldw	x, (0x29, sp)
 	cpw	x, #0x0032
 	jrsge	00122$
-;	se8r01-receive-pwm.c: 646: for (z1 = 0; z1 < 50; ++z1)
+;	se8r01-receive-pwm.c: 647: for (z1 = 0; z1 < 50; ++z1)
 	clrw	x
 	ldw	(0x27, sp), x
 00115$:
 	ldw	x, (0x27, sp)
 	cpw	x, #0x0032
 	jrsge	00119$
-;	se8r01-receive-pwm.c: 647: __asm__("nop");
+;	se8r01-receive-pwm.c: 648: __asm__("nop");
 	nop
-;	se8r01-receive-pwm.c: 646: for (z1 = 0; z1 < 50; ++z1)
+;	se8r01-receive-pwm.c: 647: for (z1 = 0; z1 < 50; ++z1)
 	ldw	x, (0x27, sp)
 	incw	x
 	ldw	(0x27, sp), x
 	jra	00115$
 00119$:
-;	se8r01-receive-pwm.c: 645: for (y1 = 0; y1 < 50; ++y1)
+;	se8r01-receive-pwm.c: 646: for (y1 = 0; y1 < 50; ++y1)
 	ldw	x, (0x29, sp)
 	incw	x
 	ldw	(0x29, sp), x
 	jra	00118$
 00122$:
-;	se8r01-receive-pwm.c: 644: for (x1 = 0; x1 < 50; ++x1)
+;	se8r01-receive-pwm.c: 645: for (x1 = 0; x1 < 50; ++x1)
 	ldw	x, (0x2b, sp)
 	incw	x
 	ldw	(0x2b, sp), x
